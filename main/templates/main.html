@@ -1,8 +1,96 @@
-<h5>Nama produk: </h5>
-<p>{{ name }}<p>
-<h5>Deskripsi produk: </h5>
-<p>{{ description }}<p>
-<h5>Harga: </h5>
-<p>{{ price }}<p>
-<h5>Sisa stok: </h5>
-<p>{{ amount }}<p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>*{
+        box-sizing: border-box;
+        font-family: 'Poppins';
+    }
+    
+    .container{
+        justify-content: center;
+        display: flex;
+    }
+
+    .header-category{
+        margin-left: 40px;
+        margin-right: 40px;
+        font-weight: 900px;
+        font-size: 24px;
+        color: rgb(23, 18, 63);
+    }
+    
+    span{
+        font-size: 12px;
+        justify-content: center;
+        align-items: center;
+        color: rgb(138, 136, 160);
+    }
+
+    hr{
+        border: 1px solid rgb(227, 226, 236);
+    }
+    
+    .table-category{
+        margin: 0,auto;
+    }
+
+    table, th, td{
+        padding: 2rem;
+    }
+
+    th{
+        color: rgb(23, 18, 63);
+        background-color: rgb(227, 226, 236);
+    }
+    td{
+        background-color: rgb(243, 243, 247);
+    }
+    
+    .category{
+        margin-top: 80px;
+        margin-bottom: 80px;
+        margin-inline: 80px;
+    }
+    
+    
+    p{
+        justify-content: center;
+        display: flex;
+    }
+
+    </style>
+    <title>Inventory</title>
+</head>
+<body>
+    <div class="container">
+        <div class="category">
+            <div class="header-category">
+                <h3 class="available-stock">Daftar Barang <span>New</span><hr></h3>
+            </div>
+            <div class="table-category">
+                <table>
+                    <tr>
+                        <th>No.</th>
+                        <th>Nama Barang</th>
+                        <th>Deskripsi Barang</th>
+                        <th>Sisa Stock</th>
+                        <th>Harga</th>
+                    </tr>
+                    <tr>
+                        <td><p>{{ no }}</p></th>
+                        <td><p>{{ name }}</p></th>
+                        <td><p>{{ description }}</p></th>
+                        <td><p>{{ amount }}</p></th>
+                        <td><p>{{ price }}</p></th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
