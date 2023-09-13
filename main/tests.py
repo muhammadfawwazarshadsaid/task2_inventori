@@ -9,6 +9,10 @@ class MainTest(TestCase):
         response = Client().get('/main/')
         self.assertTemplateUsed(response, 'main.html')
 
+    def test_image_element_exists(self):
+        response = Client().get('/main/')
+        self.assertContains(response, '<img')
+        
     def test_main_context_structure(self):
         response = self.client.get('/main/')
         self.assertEqual(response.status_code, 200)
