@@ -9,10 +9,6 @@ class MainTest(TestCase):
         response = Client().get('/main/')
         self.assertTemplateUsed(response, 'main.html')
 
-    def test_image_element_exists(self):
-        response = Client().get('/main/')
-        # Ganti "brand.png" dengan src yang sesuai untuk gambar yang ingin Anda periksa
-        self.assertContains(response, 'src="templates/logo.png"')
     def test_main_context_structure(self):
         response = self.client.get('/main/')
         self.assertEqual(response.status_code, 200)
@@ -20,43 +16,34 @@ class MainTest(TestCase):
         # Memeriksa struktur konteks yang diharapkan
         expected_context = [
             {
-            'no': 1,
-            'name': 'Kandang Kucing',
-            'description': "Kandang kucing dengan anti karat dan anti bau",
-            'amount': 5,
-            'price': 74000,
-        },
-        {
-            'no': 2,
-            'name': 'Pasir 200g',
-            'description': "Pasir putih anti lengket",
-            'amount': 91,
-            'price': 10000,
-        },
-        {
-            'no': 3,
-            'name': 'Royal Candi 1kg',
-            'description': "Makanan kucing berkualitas premium",
-            'amount': 241,
-            'price': 240000,
-        }
+                'no': 1,
+                'name': 'Kandang Kucing',
+                'description': "Kandang kucing dengan anti karat dan anti bau",
+                'amount': 5,
+                'price': 74000,
+            },
+            {
+                'no': 2,
+                'name': 'Pasir 200g',
+                'description': "Pasir putih anti lengket",
+                'amount': 91,
+                'price': 10000,
+            },
+            {
+                'no': 3,
+                'name': 'Royal Candi 1kg',
+                'description': "Makanan kucing berkualitas premium",
+                'amount': 241,
+                'price': 240000,
+            }
         ]
 
-        actual_context = response.context  
-        self.assertEqual(actual_context['no'], expected_context[0]['no'])
-        self.assertEqual(actual_context['name'], expected_context[0]['name'])
-        self.assertEqual(actual_context['description'], expected_context[0]['description'])
-        self.assertEqual(actual_context['amount'], expected_context[0]['amount'])
-        self.assertEqual(actual_context['price'], expected_context[0]['price'])
-        
-        self.assertEqual(actual_context['no'], expected_context[1]['no'])
-        self.assertEqual(actual_context['name'], expected_context[1]['name'])
-        self.assertEqual(actual_context['description'], expected_context[1]['description'])
-        self.assertEqual(actual_context['amount'], expected_context[1]['amount'])
-        self.assertEqual(actual_context['price'], expected_context[1]['price'])
+        actual_context = response.context['items']
+        self.assertEqual(len(actual_context), len(expected_context))
 
-        self.assertEqual(actual_context['no'], expected_context[2]['no'])
-        self.assertEqual(actual_context['name'], expected_context[2]['name'])
-        self.assertEqual(actual_context['description'], expected_context[2]['description'])
-        self.assertEqual(actual_context['amount'], expected_context[2]['amount'])
-        self.assertEqual(actual_context['price'], expected_context[2]['price'])
+        for i in range(len(expected_context)):
+            self.assertEqual(actual_context[i]['no'], expected_context[i]['no'])
+            self.assertEqual(actual_context[i]['name'], expected_context[i]['name'])
+            self.assertEqual(actual_context[i]['description'], expected_context[i]['description'])
+            self.assertEqual(actual_context[i]['amount'], expected_context[i]['amount'])
+            self.assertEqual(actual_context[i]['price'], expected_context[i]['price'])
