@@ -6,7 +6,11 @@
     <link rel="stylesheet" href="./style.css"><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-    <style>*{
+    <style>
+    
+    @media (min-width: 700px) {
+        
+    *{
         box-sizing: border-box;
         font-family: 'Poppins';
     }
@@ -14,6 +18,37 @@
     .container{
         justify-content: center;
         display: flex;
+    }
+
+    a{
+        text-decoration: none;
+        color: black;
+        text-decoration: aqua;
+    }
+
+    nav{
+        position: sticky;
+        background-color: white;
+        margin: 0,auto;
+        padding: 20px;
+        justify-content: space-between;
+        box-shadow: 0 2px 4px 0 rgb(229, 228, 240);
+        border-radius: 0 0 4px 4px;
+    }
+
+    .brand{
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+        margin-inline: 80px;
+    }
+
+    img{
+        width: 60px;
+    }
+    p.inventory-toko{
+        font-weight: bold;
+        font-size: 16px;
     }
 
     .header-category{
@@ -52,7 +87,7 @@
     }
     
     .category{
-        margin-top: 80px;
+        margin-top: 40px;
         margin-bottom: 80px;
         margin-inline: 80px;
     }
@@ -62,11 +97,21 @@
         justify-content: center;
         display: flex;
     }
+}
 
     </style>
     <title>Inventory</title>
 </head>
 <body>
+    <nav>
+        <div class="brand"><img class= "brand-logo" src="https://clipground.com/images/pet-shop-logo-clipart-5.jpg" alt="Logo Petshop">
+        <div class="menu">
+            <div class="inventory-toko">
+                <p class="inventory-toko"><a href="">Inventori Toko</a></p>
+            </div>
+        </div>
+        </div>
+    </nav>
     <div class="container">
         <div class="category">
             <div class="header-category">
@@ -79,15 +124,17 @@
                         <th>Nama Barang</th>
                         <th>Deskripsi Barang</th>
                         <th>Sisa Stock</th>
-                        <th>Harga</th>
+                        <th>Harga Satuan</th>
                     </tr>
+                    {% for item in items %}
                     <tr>
-                        <td><p>{{ no }}</p></th>
-                        <td><p>{{ name }}</p></th>
-                        <td><p>{{ description }}</p></th>
-                        <td><p>{{ amount }}</p></th>
-                        <td><p>{{ price }}</p></th>
+                        <td><p>{{ item.no }}</p></td>
+                        <td><p>{{ item.name }}</p></td>
+                        <td><p>{{ item.description }}</p></td>
+                        <td><p>{{ item.amount }}</p></td>
+                        <td><p>{{ item.price }}</p></td>
                     </tr>
+                    {% endfor %}
                 </table>
             </div>
         </div>
