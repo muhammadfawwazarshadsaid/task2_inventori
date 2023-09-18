@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<link rel="stylesheet" href="./style.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+
+@media (min-width: 700px) {
+    
+*{
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+.container{
+    justify-content: center;
+    display: flex;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    text-decoration: aqua;
+}
+
+nav{
+    position: sticky;
+    background-color: white;
+    margin: 0,auto;
+    padding: 20px;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px 0 rgb(229, 228, 240);
+    border-radius: 0 0 4px 4px;
+}
+
+.brand{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin-inline: 80px;
+}
+
+img{
+    width: 60px;
+}
+p.inventory-toko{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.header-category{
+    margin-left: 40px;
+    margin-right: 40px;
+    font-weight: 900px;
+    font-size: 24px;
+    color: rgb(23, 18, 63);
+}
+
+span{
+    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+    color: rgb(138, 136, 160);
+}
+
+hr{
+    border: 1px solid rgb(227, 226, 236);
+}
+
+.table-category{
+    margin: 0,auto;
+}
+
+table, th, td{
+    padding: 2rem;
+}
+
+th{
+    color: rgb(23, 18, 63);
+    background-color: rgb(227, 226, 236);
+}
+td{
+    background-color: rgb(243, 243, 247);
+}
+
+.category{
+    margin-top: 40px;
+    margin-bottom: 80px;
+    margin-inline: 80px;
+}
+
+
+p{
+    justify-content: center;
+    display: flex;
+}
+}
+
+</style>
+<title>Inventory</title>
+{% endblock meta %}
