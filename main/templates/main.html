@@ -2,43 +2,61 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <nav>
-        <div class="brand"><img class= "brand-logo" src="https://clipground.com/images/pet-shop-logo-clipart-5.jpg" alt="Logo Petshop">
+
+<body>
+    <div class="padding">
+    <nav class="fullnav">
+        <div class="logo">
+            <!-- <img src="https://th.bing.com/th/id/R.6ad0fe976be696c1e6804c26a0b24e0c?rik=JF21H%2feXmlfXnQ&riu=http%3a%2f%2fmudvex.com%2fwp-content%2fuploads%2f2019%2f10%2flogo-12.png&ehk=H7KtZPbx18fPDvYg3nX7AfQ7vWFeNpZ9RcNSdNRKKrI%3d&risl=&pid=ImgRaw&r=0" alt="logo-brand"> -->
+            <i class="fa-solid fa-cat" style="color: #ffffff; padding: 8px; border-radius: 8px; background-color: #e24c1d; margin-right: 8px;"></i>
+            <p class="name">Mumu</p>
+            <p class="name" style="color: #0195eb; font-weight: 800;">Miaw</p>
+        </div>
         <div class="menu">
-            <div class="inventory-toko">
-                <p class="inventory-toko"><a href="">Inventori Toko</a></p>
+            <section class="menu-content">
+                <a class="primary" href="#home">Tersedia</a>
+                <a class="secondary" href="#home">Terjual</a>
+            </section>
+            <i class="fa-solid fa-bell" style="color: rgb(226, 76, 29); background-color: white;"></i>
+            <span class="vertical-line">|
+            </span>
+            <div class="profile">
+                <p class="user">admin</p>
+                <i id="chevron" class="fa-solid fa-chevron-down" style="color: #b4b4b4; background-color: white;"></i>
             </div>
         </div>
-        </div>
-    </nav>
+        
+    </nav> 
+    </div>
     <div class="container">
-        <div class="category">
-            <div class="header-category">
-                
-                <div class="except-hr">
-                    <a href="{% url 'main:create_product' %}">
-                        <button>
-                            Add New Product
-                        </button>
-                    </a>
-                    <h3 class="available-stock">Daftar Barang <span>New</span></h3>
+        <div class="title-addproduct">
+            <div class="head">
+                <div class="head-content">
+                    <h1 class="container-title">Produk Tersedia</h1>
+                    <p class="container-desc">Produk yang masih ada dalam inventori.</p>
                 </div>
-                <hr>
-                
+                <div class="primary-button">
+                <a class="button" href="{% url 'main:create_product' %}">
+                    <button>
+                        Add New Product
+                        <i class="fa fa-plus" aria-hidden="true" style="color: #0195eb; background-color: #ffffff; padding: 4px;"></i>
+                    </button>
+                </a>
+                </div>
             </div>
-            <div class="table-category">
+            <div class="table">
                 <table>
-                    <tr>
-                        <th>No.</th>
-                        <th>Pembaruan Terakhir</th>
-                        <th>Nama Barang</th>
-                        <th>Deskripsi Barang</th>
-                        <th>Sisa Stock</th>
-                        <th>Harga Satuan</th>
+                    <tr class="table-head">
+                        <th><p class="table-head">No.</p></th>
+                        <th><p class="table-head">Perubahan Terakhir</p></th>
+                        <th><p class="table-head">Nama Item</p></th>
+                        <th><p class="table-head">Deskripsi Barang</p></th>
+                        <th><p class="table-head">Sisa Stock</p></th>
+                        <th><p class="table-head">Harga Satuan</p></th>
                     </tr>
                     {% for item in products %}
-                    <tr>
-                        <td><p class="table_content">{{ item.no }}</p></td>
+                    <tr class="table-content">
+                        <td><p class="table-content">{{ item.no }}</p></td>
                         <td><p class="table-content">{{ item.date }}</p></td>
                         <td><p class="table-content">{{ item.name }}</p></td>
                         <td><p class="table-content">{{ item.description }}</p></td>
@@ -47,8 +65,10 @@
                     </tr>
                     {% endfor %}
                 </table>
-                <br />
             </div>
+            
         </div>
     </div>
+</body>
+
 {% endblock content %}
