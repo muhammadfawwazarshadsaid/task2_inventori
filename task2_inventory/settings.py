@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'task2_inventory.wsgi.application'
+WSGI_APPLICATION = 'task2_inventori.wsgi.application'
 
 
 # Database
