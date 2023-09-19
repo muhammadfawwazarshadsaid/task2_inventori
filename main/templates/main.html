@@ -14,12 +14,23 @@
     <div class="container">
         <div class="category">
             <div class="header-category">
-                <h3 class="available-stock">Daftar Barang <span>New</span><hr></h3>
+                
+                <div class="except-hr">
+                    <a href="{% url 'main:create_product' %}">
+                        <button>
+                            Add New Product
+                        </button>
+                    </a>
+                    <h3 class="available-stock">Daftar Barang <span>New</span></h3>
+                </div>
+                <hr>
+                
             </div>
             <div class="table-category">
                 <table>
                     <tr>
                         <th>No.</th>
+                        <th>Pembaruan Terakhir</th>
                         <th>Nama Barang</th>
                         <th>Deskripsi Barang</th>
                         <th>Sisa Stock</th>
@@ -27,21 +38,16 @@
                     </tr>
                     {% for item in products %}
                     <tr>
-                        <td><p>{{ item.no }}</p></td>
-                        <td><p>{{ item.name }}</p></td>
-                        <td><p>{{ item.description }}</p></td>
-                        <td><p>{{ item.amount }}</p></td>
-                        <td><p>{{ item.price }}</p></td>
+                        <td><p class="table_content">{{ item.no }}</p></td>
+                        <td><p class="table-content">{{ item.date }}</p></td>
+                        <td><p class="table-content">{{ item.name }}</p></td>
+                        <td><p class="table-content">{{ item.description }}</p></td>
+                        <td><p class="table-content">{{ item.amount }}</p></td>
+                        <td><p class="table-content">{{ item.price }}</p></td>
                     </tr>
                     {% endfor %}
                 </table>
                 <br />
-
-                <a href="{% url 'main:create_product' %}">
-                    <button>
-                        Add New Product
-                    </button>
-                </a>
             </div>
         </div>
     </div>
