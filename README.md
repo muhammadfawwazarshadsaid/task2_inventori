@@ -1,3 +1,126 @@
+
+
+=======================================================================================================================================================================
+
+# Tugas 3
+
+
+[x] Membuat input form untuk menambahkan objek model pada app sebelumnya.
+
+[x] Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
+
+[x] Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
+
+[x] Menjawab beberapa pertanyaan berikut pada README.md pada root folder.
+
+ ## Apa perbedaan antara form POST dan form GET dalam Django?
+      - GET biasanya digunakan untuk pengiriman data yang tidak sensitif, seperti query pencarian. 
+      Sedangkan POST, biasanya digunakan untuk data yang membutuhkan keamanan tingkat tinggi, seperti username dan password.
+      - GET mengirimkan data melalui URL lalu disimpan ke action, 
+      sedangkan POST langsung mengirimkan data ke action untuk ditampung tanpa melalui URL
+      - GET tidak boleh melebihi 2047 karakter, 
+      sedangkan POST tidak tebatas
+      - GET dapat meningkatkan efisiensi karena dapat dicache oleh server, 
+      sedangkan POST memerlukan request baru
+
+
+## Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+      Dalam proses pengiriman data, JSON memiliki objek yang terdiri dari pasangan key-value di mana masing-masing objek memiliki key unik untuk mengakses value. 
+      Sedangkan untuk HTML dan XML menggunakan konsep hierarki struktur pohon di mana elemen lain dapat membentuk elemen bersarang di dalam suatu elemen. 
+      Antara HTML dan XML banyak menggunakan penandaan tag. Namun, perbedaan yang mencolok dari HTML dan XML terletak pada fungsionalitasnya. 
+      HTML menampilkan data ke dalam bentuk konten (mengatur kerangka struktur web) dengan tujuan berbeda-beda, seperti img untuk menampilkan data dan tag a untuk mengalirkan ke suatu tautan. 
+      Sedangkan XML, tag digunakan sebagai penandaan / identitas suatu nilai yang memiliki fungsi serupa dengan XML. 
+      Walaupun HTML berfokus dalam pembuatan skeleton website, di HTML juga terdapat form yang dapat berperan sebagai pertukaran data.
+
+## Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+      JSON memiliki sintaks yang mudah dipahami dan sajian datanya memiliki kemiripan dengan bahasa yang serupa seperti Python, Java, dan Java Script. Salah satu hal yang serupa dilakukan di JSON adalah bisa melakukan penyimpanan struktur data yang kompleks menggunakan array. Dalam melakukan parsing, JSON tidak memiliki cara khusus karena hanya tinggal mengimplementasikan dari javascript. Efisiensi tinggi yang dimiliki JSON juga menajdi keunggulan. Dalam hal ini, JSON mengurangi beban jaringan saat transfer data dan klien karena tidak memerlukan ukuran file yang besar.
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+### Migrate Ulang
+   Saya melakukan migrasi ulang karena terdapat kesalahan no amount in list dengan menggunakan command di mana saat melakukan itu saya set angka 1 pada base value.
+   ```bash
+   py manage.py makemigrations
+   py manage.py migrate
+   ```
+### Mengubah routing ke `/`
+Di file `urls.py`, saya melakukan pengubahan routing dari `main/` menjadi `/`.
+
+### Membuat folder base untuk kerangka HTML dan mengatur `settings.py`
+Saya melakukan penambahan berkas `base.html` ke dalam direktori templates untuk membuat formatting kerangka HTML. Lalu, setelah itu saya mencoba mengatur berkas main.html mana saja yang perlu dihapus dari file tugas2 sebelumnya. Agar berkas base.html terdeteksi, saya menambahkan
+```bash
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'], # Tambahkan kode ini
+        'APP_DIRS': True,
+       
+    }
+]
+```
+ke dalam file `settings.py`.
+
+### Membuat Form Data Produk
+Di file sebelumnya, saya melakukan input manual untuk data produk. Pada tugas ini, saya membuat berkas `forms.py` untuk menginisiasi data models yang ada di Product. Setelah itu saya menambahkan beberapa import di dalam `view.py`.
+```bash
+from django.http import HttpResponseRedirect
+from main.forms import ProductForm
+from django.urls import reverse
+```
+
+### Terima request form
+Agar form bisa diakses, perlu suatu parameter yang menerima submit dari form. Saya menginisiasi fungsi `create_product` agar bisa memvalidasi isi input dan menyimpannya.
+
+### Ubah show_main
+Karena produk-produk diinisiasi secara otomatis, saya mencoba menghapus key dari dict context. Lalu, untuk data produk yang diisi manual saya inisiasi kembali dengan membuat suatu objek yang dapat mengambil object Produk.
+
+### Membuat akses add produk
+Agar produk bisa ditambahkan secara iteratif, saya membuat file `create_product.html` dan mengedit `urls.py` untuk menambahkan import serta path.
+
+### XML
+Untuk menampilkan data dalam format XML, saya membuat sebuah fungsi di dalam file `views.py` yang terletak di dalam folder `main`. Fungsi ini diberi nama `show_xml` sesuai dengan tugas yang diberikan. Fungsi `show_xml` ini akan menerima parameter request dan akan mengambil semua data dari objek Product dan menyimpannya dalam sebuah variabel. Data ini akan diubah menjadi format XML menggunakan `serializers` dan akan dikirim kembali kepada pengguna dalam bentuk respons `HttpResponse`. Agar fungsi ini dapat berjalan dengan baik, kita perlu menambahkan impor `serializers` dan `HttpResponse` dari modul Django. Selanjutnya, untuk menampilkan data berdasarkan ID, kita akan membuat sebuah fungsi baru yang diberi nama `show_xml_by_id`. Fungsi ini akan memiliki fungsionalitas yang serupa dengan fungsi sebelumnya, tetapi dengan penambahan parameter id.
+
+Setelah selesai membuat kedua fungsi tersebut, saya perlu mengimpor keduanya ke dalam file `urls.py` yang terletak di dalam folder `main`. Selanjutnya, tambahkan dua path yaitu `path('xml/', show_xml``, name='show_xml')` dan `path('xml/<int:id>/'``, show_xml_by_id, name='show_xml_by_id')` ke dalam daftar `urlpatterns`. Dengan demikian, kita akan dapat melihat data dalam bentuk XML melalui tautan `http://localhost:8000/xml` dan `http://localhost:8000/xml/[id]` untuk melihat hasilnya.
+
+### JSON
+   Dalam hal ini, saya menginginkan projek bisa diakses dalam format JSON. Oleh karena itu, hal yang saya lakukan adalah membuat fungsi yang menerima parameter `show_json_id`. Kemudian, di dalam file `urls.py` saya menambahkan path `path('json/', show_json, name='show_json'),` dan `path('json/<int:id>/', show_json_by_id, name='show_json_by_id'),` ke dalam list `urlpatterns`. Kemudian, saya mengecek hasil melalui `http://localhost:8000/json` ataupun `http://localhost:8000/json/1`
+
+[x] Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+
+![menu](menu.png)
+![create-product](create-product.png)
+![xml](xml.png)
+![xml-1](xml-1.png)
+![json](json.png)
+![json-1](json-1.png)
+
+[x] Melakukan add-commit-push ke GitHub.
+   Sebelum push, saya mendapatkan masalah file bentrok di file head dan hal yang saya lakukan melakukan 
+   ```bash
+   git checkout main
+   ```
+   Lalu, melakukan merge dengan branch selain main.
+   ```bash
+   git merge task3
+   ```
+   Di terminal, saya melakukan tahap akhir yaitu mem-push semua perubahan.
+   ```bash
+   git add .
+   git commit -m "pesan"
+   git push -u origin main
+   ```
+
+
+
+
+
+
+
+
+=======================================================================================================================================================================
+
+Tugas 2
+
 https://task2inventory.adaptable.app
 
 1. Langkah membuat proyek Inventori Alat dan Produk untuk Kucing:
