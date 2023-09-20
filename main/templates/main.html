@@ -33,7 +33,7 @@
             <div class="head">
                 <div class="head-content">
                     <h1 class="container-title">Produk Tersedia</h1>
-                    <p class="container-desc">Produk yang masih ada dalam inventori.</p>
+                    <p class="container-desc">Produk yang masih ada dalam inventori berjumlah {{ products|length }}.</p>
                 </div>
                 <div class="primary-button">
                 <a class="button" href="{% url 'main:create_product' %}">
