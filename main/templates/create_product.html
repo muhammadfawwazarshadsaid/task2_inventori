@@ -29,34 +29,26 @@
     </div>
 
 
-    <div class="container">
-        <div class="title-addproduct">
-            <button class="x">
-        
-                <i class="fa fa-chevron-left" aria-hidden="true" style="color: #0195eb; background-color: #ffffff; padding: 4px;"></i>
+        <div style="padding: 80px;">
+            <button style="display: flex;">
+                <i class="fa fa-chevron-left" aria-hidden="true" style="color: #0195eb; background-color: #ffffff; padding: 4px; "></i>
                 Kembali ke Inventori
             </button>
-            <h1 class="add-new-prod">Add New Product</h1>
-            <form method="POST" class="form-add">
+            <h1 class="add-new-prod" style="background-color: rgb(235, 235, 235);">Add New Product</h1>
+            <form method="POST" class="form-add" style="background-color: #ffffff; display: flex; justify-content: center; padding: 80px; border-radius: 20px; flex-direction: column;">
                 {% csrf_token %}
                 <table class="table-add">
                     {{ form.as_table }}
-                    <tr >
-                        <td>
-
-                        </td>
-                        <td >
-                            <input class="btn" type="submit" value="Add Product"/>
-                            
-                        </td>
-                    </tr>
                 </table>
+                <td style="background-color: #0195eb;"><input class="btn" type="submit" value="Add Product" style=" align-items: center; color: white; background-color: #0195eb;"></td>
+
             </form>
+            
                 
         </div>
-    </div>
 
 
+    
 
 
 {% endblock %}

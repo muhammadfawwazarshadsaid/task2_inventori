@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Login</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class="login" style="padding-inline: 600px; padding-block: 200px; display: flex; flex-direction: column; justify-content: center;">
+
+    
+    <form method="POST" class="form-add" style="background-color: #ffffff; display: flex; justify-content: center; padding: 40px; border-radius: 60px; flex-direction: column; ">
+        {% csrf_token %}
+        <h1 class="login" style="display: flex; justify-content: center; color: black; background-color: #ffffff;">Login</h1></td>
+        <td style="background-color: #ffffff;"><p style="font-size: 16px; font-weight: 600; background-color: #ffffff; height: 16px;">Username</p></td>
+        <td style="background-color: #ffffff;"><input type="text" name="username" placeholder="Username" class="form-control" style="height: 12px; padding: 24px; border-radius: 20px; border: none; font-size: 14px; color: #242424;"></td>
+        <td style="background-color: #ffffff;"><p style="font-size: 16px; font-weight: 600; background-color: #ffffff; height: 16px;">Password</p></td>
+        <td style="background-color: #ffffff;"><input type="password" name="password" placeholder="Password" class="form-control" style="height: 12px; padding: 24px; border-radius: 20px; border: none; font-size: 14px; color: #242424;"></td>
+        <td style="background-color: #0195eb;"><input class="btn login_btn" type="submit" value="Login" style=" align-items: center; color: white; background-color: #0195eb;margin-block: 40px;"></td>
+        <p style="font-size: 14px; background-color: #ffffff; justify-content: center; display: flex;">Don't have an account yet? <a href="{% url 'main:register' %}" style="color: #0195eb; font-size: 14px; background-color: #ffffff; margin-left: 8px;">Register Now</a> </p>
+    </form>
+</div>
+    
+
+    
+</div>
+
+{% endblock content %}

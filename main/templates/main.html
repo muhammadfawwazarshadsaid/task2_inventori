@@ -21,7 +21,7 @@
             <span class="vertical-line">|
             </span>
             <div class="profile">
-                <p class="user">admin</p>
+                <p class="user">{{ name }}</p>
                 <i id="chevron" class="fa-solid fa-chevron-down" style="color: #b4b4b4; background-color: white;"></i>
             </div>
         </div>
@@ -66,6 +66,12 @@
                     {% endfor %}
                 </table>
             </div>
+            <h5>Sesi terakhir login: {{ last_login }}</h5>
+            <a href="{% url 'main:logout' %}">
+                <button>
+                    Logout
+                </button>
+            </a>
             
         </div>
     </div>
