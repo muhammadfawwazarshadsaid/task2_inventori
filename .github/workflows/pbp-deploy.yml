@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - master
 
 jobs:
   Deployment:
@@ -15,21 +16,9 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Set up SSH
-      env:
-        DOKKU_SSH_PRIVATE_KEY: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
-      run: |
-        mkdir -p ~/.ssh
-        echo "$DOKKU_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        eval $(ssh-agent -s)
-        ssh-add ~/.ssh/id_rsa
-        ssh-keyscan -t rsa pbp.cs.ui.ac.id >> ~/.ssh/known_hosts
-
     - name: Push to Dokku server
       uses: dokku/github-action@master
       with:
         branch: 'main'
-        git_remote_url: ssh://dokku@${{ secrets.DOKKU_SERVER_IP }}:${{ secrets.CUSTOM_SSH_PORT }}/${{ secrets.DOKKU_APP_NAME }}
+        git_remote_url: ssh://dokku@${{ secrets.DOKKU_SERVER_IP }}/${{ secrets.DOKKU_APP_NAME }}
         ssh_private_key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
-Z
