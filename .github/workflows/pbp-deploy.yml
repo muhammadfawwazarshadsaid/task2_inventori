@@ -28,5 +28,9 @@ jobs:
         mkdir -p ~/.ssh
         echo "$DOKKU_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -p CUSTOM_SSH_PORT -t rsa your-dokku-server.com >> ~/.ssh/known_hosts
-    
+        eval $(ssh-agent -s)
+        ssh-add ~/.ssh/id_rsa
+        ssh-keyscan -t rsa pbp.cs.ui.ac.id >> ~/.ssh/known_hosts
+
+        # Perform the Git push command to Dokku
+        git push dokku main
