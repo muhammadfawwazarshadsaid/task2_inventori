@@ -32,18 +32,14 @@
         <div style="padding: 80px;">
             <button style="display: flex;">
                 <i class="fa fa-chevron-left" aria-hidden="true" style="color: #0195eb; background-color: #ffffff; padding: 4px; "></i>
-                Kembali ke Inventori
+                <a href="/" style="text-decoration: none; color: black; background-color: #ffffff;">Kembali ke Inventori</a>
             </button>
             <h1 class="add-new-prod" style="background-color: rgb(235, 235, 235);">Add New Product</h1>
-            <form method="POST" class="form-add" style="background-color: #ffffff; display: flex; justify-content: center; padding: 80px; border-radius: 20px; flex-direction: column;">
+            <form method="POST" class="form-add" style="background-color: #ffffff; display: flex; justify-content: center; padding: 40px; border-radius: 60px; flex-direction: column; ">
                 {% csrf_token %}
-                <table class="table-add">
-                    {{ form.as_table }}
-                </table>
-                <td style="background-color: #0195eb;"><input class="btn" type="submit" value="Add Product" style=" align-items: center; color: white; background-color: #0195eb;"></td>
-
-            </form>
-            
+                {{ form.as_table }}
+                <td style="background-color: #0195eb;"><input class="btn" type="submit" value="Add Product" style=" align-items: center; color: white; background-color: #0195eb;margin-block: 40px;"></td>
+                </form>
                 
         </div>
 
