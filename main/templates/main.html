@@ -62,10 +62,10 @@
                         <td><p class="table-content">{{ item.name }}</p></td>
                         <td><p class="table-content">{{ item.description }}</p></td>
                         <td style="display: flex; flex-direction: row; justify-content: center; align-items: center; background-color: #ffffff;">
-                            <p class="table-content">{{ item.amount }}</p>
                             <a href="{% url 'main:decrement_amount' item.pk %}" style="display: flex; align-items: center; justify-content: center; background-color: #ffffff; text-decoration: none; padding: 8px;">
                                 <i class="fa fa-minus" aria-hidden="true" style="color: #0195eb; background-color: #ffffff; padding: 4px; border-radius: 2px; text-decoration: none; border-style: none; border-color: #0195eb;"></i>
                             </a>
+                            <p class="table-content">{{ item.amount }}</p>
                             <a href="{% url 'main:increment_amount' item.pk %}" style="display: flex; align-items: center; justify-content: center; background-color: #ffffff; text-decoration: none; padding: 8px;">
                                 <i class="fa fa-plus" aria-hidden="true" style="color: #0195eb; background-color: #ffffff; padding: 4px; border-radius: 2px; text-decoration: none; border-style: none; border-color: #0195eb;"></i>
                             </a>
@@ -81,13 +81,18 @@
                     {% endfor %}
                 </table>
             </div>
-            <h5>Sesi terakhir login: {{ last_login }}</h5>
-            <a href="{% url 'main:logout' %}">
-                <button>
-                    Logout
-                </button>
-            </a>
-            
+            <div style="display: flex; flex-direction: row; justify-content: space-between; padding-top: 200px; background-color: rgb(241,241,241);">
+                <div style="display: flex; flex-direction: row; justify-content: space-between; border-radius: 24px; align-items: center; width: 100%; padding: 20px; background-color: #ffffff;">
+                    <h5 style="font-weight: 500; color: #b4b4b4; background-color: #ffffff;">Sesi terakhir login: {{ last_login }}</h5>
+                    <a href="{% url 'main:logout' %}" style="background-color: #ffffff;">
+                        <button style="background-color: #e24c1d; color: #ffffff;">
+                            Logout
+                        </button>
+                    </a>
+                    
+                </div>
+                
+            </div>
         </div>
     </div>
 </body>
