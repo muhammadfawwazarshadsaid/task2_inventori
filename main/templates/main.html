@@ -53,16 +53,31 @@
                         <th><p class="table-head">Deskripsi Barang</p></th>
                         <th><p class="table-head">Sisa Stock</p></th>
                         <th><p class="table-head">Harga Satuan</p></th>
+                        <th><p class="table-head">Action</p></th>
                     </tr>
                     {% for item in products %}
-                    <tr class="table-content">
+                    <tr class="table-content" style="background-color: #ffffff;">
                         <td><p class="table-content">{{ item.no }}</p></td>
                         <td><p class="table-content">{{ item.date }}</p></td>
                         <td><p class="table-content">{{ item.name }}</p></td>
                         <td><p class="table-content">{{ item.description }}</p></td>
-                        <td><p class="table-content">{{ item.amount }}</p></td>
-                        <td><p class="table-content">{{ item.price }}</p></td>
+                        <td style="display: flex; flex-direction: row; justify-content: center; align-items: center; background-color: #ffffff;">
+                            <p class="table-content">{{ item.amount }}</p>
+                            <a href="{% url 'main:decrement_amount' item.pk %}" style="display: flex; align-items: center; justify-content: center; background-color: #ffffff; text-decoration: none; padding: 8px;">
+                                <i class="fa fa-minus" aria-hidden="true" style="color: #0195eb; background-color: #ffffff; padding: 4px; border-radius: 2px; text-decoration: none; border-style: none; border-color: #0195eb;"></i>
+                            </a>
+                            <a href="{% url 'main:increment_amount' item.pk %}" style="display: flex; align-items: center; justify-content: center; background-color: #ffffff; text-decoration: none; padding: 8px;">
+                                <i class="fa fa-plus" aria-hidden="true" style="color: #0195eb; background-color: #ffffff; padding: 4px; border-radius: 2px; text-decoration: none; border-style: none; border-color: #0195eb;"></i>
+                            </a>
+                        </td>
+                        <td><p class="table-content">{{ item.price }}</p></td><td>
+                            <!-- Add a delete button for each product -->
+                            <a href="{% url 'main:delete_product' item.pk %}" style="display: flex; align-items: center; justify-content: center; background-color: white;">
+                                <i class="fa fa-trash" aria-hidden="true" style="color: #e24c1d; background-color: #ffd7cb; border-radius: 12px; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; padding: 8px;"></i>
+                            </a>
+                        </td>
                     </tr>
+                    
                     {% endfor %}
                 </table>
             </div>

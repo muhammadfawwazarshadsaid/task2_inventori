@@ -6,12 +6,12 @@
 
 {% block content %}  
 
-<div class="register" style="padding-inline: 600px; padding-block: 200px; display: flex; flex-direction: column; justify-content: center;">
+<div class="register" style="padding-inline: 400px; padding-block: 200px; display: flex; flex-direction: column; justify-content: center;">
 
     
     <form method="POST" class="form-add" style="background-color: #ffffff; display: flex; justify-content: center; padding: 40px; border-radius: 60px; flex-direction: column; ">
         {% csrf_token %}
-        <h1 class="login" style="display: flex; justify-content: center; color: black; background-color: #ffffff;">Login</h1></td>
+        <h1 class="login" style="display: flex; justify-content: center; color: black; background-color: #ffffff;">Register</h1></td>
         {{ form.as_table }}
         <td style="background-color: #0195eb;"><input class="btn login_btn" type="submit" value="Register" style=" align-items: center; color: white; background-color: #0195eb;margin-block: 40px;"></td>
         <p style="font-size: 14px; background-color: #ffffff; justify-content: center; display: flex;">Already have an account? <a href="{% url 'main:login' %}" style="color: #0195eb; font-size: 14px; background-color: #ffffff; margin-left: 8px;">Login</a> </p>

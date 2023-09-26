@@ -22,7 +22,9 @@ def show_main(request):
     context = {
         'products': products,
         'name': request.user.username,
-        'last_login': request.COOKIES['last_login'],}
+        'last_login': request.COOKIES.get('last_login', 'No last login information available'),
+
+        }
 
     return render(request, "main.html", context)
 
@@ -33,6 +35,7 @@ def create_product(request):
     if form.is_valid() and request.method == "POST":
         product = form.save(commit=False)
         product.user = request.user
+        product.current_stock = product.amount
         product.save()
         return HttpResponseRedirect(reverse('main:show_main'))
 
@@ -84,3 +87,44 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('main:login')
+
+
+from django.shortcuts import get_object_or_404
+
+def delete_product(request, product_id):
+    # Get the product by its ID or return a 404 if not found
+    product = get_object_or_404(Product, pk=product_id)
+
+    # Check if the user has permission to delete the product
+    if request.user == product.user:
+        # Delete the product
+        product.delete()
+        # Redirect to the main page or any other appropriate page
+        return HttpResponseRedirect(reverse('main:show_main'))
+    else:
+        # Return a response indicating the user doesn't have permission
+        return HttpResponse("You do not have permission to delete this product.")
+
+
+from django.shortcuts import get_object_or_404, redirect
+from main.models import Product
+
+def increment_amount(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+
+    # Check if the user has permission to update the product
+    if request.user == product.user:
+        product.amount += 1
+        product.save()
+    
+    return redirect('main:show_main')
+
+def decrement_amount(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+
+    # Check if the user has permission to update the product
+    if request.user == product.user and product.amount > 0:
+        product.amount -= 1
+        product.save()
+
+    return redirect('main:show_main')
