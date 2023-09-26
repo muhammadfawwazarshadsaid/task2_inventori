@@ -1,3 +1,162 @@
+# Tugas 4
+
+ Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+ Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+ Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+ Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+ 
+ 
+
+ ## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+ ### Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
+
+   Pertama-tama saya mencoba mengimplementasikan fungsi register. Saya tidak membuat fungsi dari awal, melainkan dengan mengimpor formulir bawaan sehingga lebih cepat.
+   ```bash
+   form = UserCreationForm();
+   ```
+
+   ```bash
+   from django.shortcuts import redirect
+   from django.contrib.auth.forms import UserCreationForm
+   from django.contrib import messages  ```
+
+   Saya menggunakan metode `HTTP POST` sehingga data yang diinput pengguna masuk ke dalam `request.POST`. Lalu, data dicek dan divalidasi untuk memastikan apakah data bisa disimpan atau tidak. Ketika syarat pengisian form terisi dengan benar, maka akan muncul pesan sukses. Setelah berhasil mendaftar, laman terredirect ke laman login untuk masuk ke akun yang baru saja dibuat.
+   
+   ```bash
+   def register(request):
+    form = UserCreationForm()
+
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your account has been successfully created!')
+            return redirect('main:login')
+    context = {'form':form}
+    return render(request, 'register.html', context)
+   ```
+
+   Lalu, untuk menyajikan data yang sudah disimpan di fungsi register akan ditampilkan di dalam berkas templates. Oleh karena itu, saya mencoba mengintegrasikan keduanya.
+   ```bash
+      {% extends 'base.html' %}
+
+         {% block meta %}
+            <title>Register</title>
+         {% endblock meta %}
+
+         {% block content %}  
+
+         <div class = "login">
+         
+         <h1>Register</h1>  
+
+            <form method="POST" >  
+                  {% csrf_token %}  
+                  <table>  
+                     {{ form.as_table }}  
+                     <tr>  
+                        <td></td>
+                        <td><input type="submit" name="submit" value="Daftar"/></td>  
+                     </tr>  
+                  </table>  
+            </form>
+
+         {% if messages %}  
+            <ul>   
+                  {% for message in messages %}  
+                     <li>{{ message }}</li>  
+                     {% endfor %}  
+            </ul>   
+         {% endif %}
+
+      </div>  
+
+      {% endblock content %}
+   ```
+
+   Beralih ke laman login, sama seperti register, saya tidak membuat fungsi login dari awal, melainkan mengimport fungsi autentikasi yang tersedia dalam bentuk templat
+   ```bash
+   from django.contrib.auth import authenticate, login
+   ```
+   ```bash
+   def login_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('main:show_main')
+        else:
+            messages.info(request, 'Sorry, incorrect username or password. Please try again.')
+    context = {}
+    return render(request, 'login.html', context)
+   ```
+   Hasil `request.POST` pengguna divalidasi kembali juga dan mengecek apakah ada pengguna di dalam database atau tidak. Jika tidak, terdapat notifikasi gagal.
+   ```bash
+      {% extends 'base.html' %}
+
+      {% block meta %}
+         <title>Login</title>
+      {% endblock meta %}
+
+      {% block content %}
+
+      <div class = "login">
+
+         <h1>Login</h1>
+
+         <form method="POST" action="">
+            {% csrf_token %}
+            <table>
+                  <tr>
+                     <td>Username: </td>
+                     <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                  </tr>
+                        
+                  <tr>
+                     <td>Password: </td>
+                     <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                  </tr>
+
+                  <tr>
+                     <td></td>
+                     <td><input class="btn login_btn" type="submit" value="Login"></td>
+                  </tr>
+            </table>
+         </form>
+
+         {% if messages %}
+            <ul>
+                  {% for message in messages %}
+                     <li>{{ message }}</li>
+                  {% endfor %}
+            </ul>
+         {% endif %}     
+            
+         Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+
+      </div>
+
+      {% endblock content %}
+   ```
+
+   Begitupula dengan logout. Jika pengguna melakukan request untuk logout, maka site akan dikembalikan menuju laman login. Pada urls,py saya mengimpor fungsi yang sudah didefinisikan dalam views.
+   ```bash
+   from main.views import logout_user
+   ```
+   beserta routing pathnya
+   ```bash
+   path('logout/', logout_user, name='logout'),
+   ```
+
+
+ ### Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+
+ ### Menghubungkan model Item dengan User.
+
+ ### Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
 
 
 =======================================================================================================================================================================
