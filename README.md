@@ -1,9 +1,31 @@
 # Tugas 4
 
- Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
- Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
- Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
- Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+
+ ## Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+ ### Pengertian
+ UserCreationForm merupakan formulir templat yyang disediakan untuk berbagai keperluan pembuatan dan pengaturan akun di mana formulir ini juga dapat menerima request berupa data input dari pengguna, seperti email dan password.
+ ### Kelebihan
+ 1. Ada verifikasi identitas yang mengharuskan pengguna memberikan bukti bahwa pengguna adalah pemilik akun yang sah bukan bot attau akun palsu.
+ 2. Informasi sudah terkumpul dalam templat di mana formulir ini bisa digunakan untuk membuat akun atau meliat data profil.
+ 3. Pengalaman lebih personal dan relevan karena pengaturan yang bisa disesuaikan.
+ 4. Ada pengontrolan akses ke konten berdasarkan tipe akun sehingga masing-masing tipe akun disajikan layanan sesuai personifikasi masing-masing.
+ ### Kekurangan
+ 1.  Monoton dan membosankan. Hal ini diakibatkan form sudah tergenerate dari templat sehingga tidak bisa mengengage pengguna dalam segi simplifikasi dan estetika.
+ 2. Rentan serangan. Hal ini diakibatkan tidak adanya sistem pengamanan yang kuat sehingga banyak terjadi kasus bruce force attack  atau pencurian identitas.
+ 3. Mudah typo dan tidak gampang diingat. Hal ini diakibatkan form mengharuskan banyak syarat password sehingga pengguna mudah mengalami kesalahan dan lupa.
+ 4. Kurang efisien. Hal ini diakibatkan banyak persyaratan yang perlu diisi sehingga memerlukan proses lama untuk mengakses platform.
+
+
+ ## Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+ Perbedaan mencolok dari autentikasi dan otorisasi adalah urutan prosesnya. Singkatnya, autentikasi berperan untuk pemeriksaan identitas dab otorisasi mengatur izin atau hak aksesnya. Secara lengkap, Autentikasi adalah proses memasukan etintas data pengguna untuk memastikan pengguna tersebut mendapatkan akses ke data atau sumber daya pada suatu website. Sedangkan otorisasi adalah proses lanjutan untuk menentukan data atau sumber daya apa saja yang dapat disajikan sesuai tipe akun pengguna. Keduanya saling berkaitan satu sama lain dalam proses tersebut dan sangat penting untuk mempersonalisasi akun berdasarkan tipe akun sehingga pengguna mendapatkan informasi-informasi yang hanya ia butuhkan saja.
+
+
+ ## Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+Dalam aplikasi web, cookiees merupakan data atau file berukuran kecil yang ada ketika pengguna mengunjungi suatu website dan menyimpan data riwayat pengguna tersebut. Dalam konteks Django, cookies digunakan untuk mengeola data sesi pengguna. Inforasi data diri spesifik masing-masing pengguna disimpan di `user session`. Prosesnya, pengguna mengakses suatu tautan website, lalu cookies menyimpan ID unik yang dikirimkan ke browser pengguna. Informasi sesi pengguna itu berkaitan dengan permintaan pengguna untuk masuk ke lingkungan sistem di mana dalam hal ini Django memiliki mekanisme untuk menyimpan dan mengeola data sesi secara aman. Dari situ, Django menyediakan API yang memungkinkan pengguna berinteraksi dalam website seperti inventori yang memungkinkan pengguna mendapat data daftar produk yang tersimpan hingga informasi sesi terakhir kali login. Lalu, cookies ini biasanya tersimpan dalam jangka waktu tertentu sehingga pengguna yang tidak dalam lingkungan siste dalam waktu tertentu otomatis terlogout.
+
+
+ ## Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+ Tidak selalu aman. Jika coockies tidak dienkripsi, maka rentan terhadap serangan pencurian informasi data, terlebih cookies yang mengandung token otentikasi masuk pengguna. Untuk itu, pastikan cookies dienkripsi terutama pada informasi sensitif. Penggunaan HTTPSOnluy dan secure flags mencegah akses melalui js, sementara secure memastikan cookies hanya dikirim melalui koneksi HTTPS. Resiko potensial yang patut diwaspadai antara lain serangan XSS yang dapat memanipulasi cookies pengguna, CSRF yang dapat mengirimkan permintaan yang tidak diinginkan pengguna, serta penyerangan lainnya.
  
  
 
