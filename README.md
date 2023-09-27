@@ -93,6 +93,11 @@
     context = {}
     return render(request, 'login.html', context)
    ```
+   Lalu, agar pengguna harus melakukan login agar bisa ke laman inventori, saya menambahkan akses halaman terestriksi pada bagian atas fungsi `show_main`
+   ```bash
+   @login_required(login_url='/login')
+   def show_main(request):
+   ```
    Hasil `request.POST` pengguna divalidasi kembali juga dan mengecek apakah ada pengguna di dalam database atau tidak. Jika tidak, terdapat notifikasi gagal.
    ```bash
       {% extends 'base.html' %}
@@ -141,8 +146,13 @@
 
       {% endblock content %}
    ```
-
-   Begitupula dengan logout. Jika pengguna melakukan request untuk logout, maka site akan dikembalikan menuju laman login. Pada urls,py saya mengimpor fungsi yang sudah didefinisikan dalam views.
+   Begitupula dengan logout. Jika pengguna melakukan request untuk logout, maka site akan dikembalikan menuju laman login.
+   ```bash
+   def logout_user(request):
+    logout(request)
+    return redirect('main:login')
+   ```
+   Pada urls,py saya mengimpor fungsi yang sudah didefinisikan dalam views.
    ```bash
    from main.views import logout_user
    ```
@@ -150,14 +160,59 @@
    ```bash
    path('logout/', logout_user, name='logout'),
    ```
-
+   Data logout tersimpan sebagai data pengguna login untuk terakhir kalinya. Hal ini saya lakukan dengan memperbarui kondisional pada `if user is not None` dengan mengatur cookie terakhir kali login bersarakan waktu pengguna logout.
+   ```bash
+   response = HttpResponseRedirect(reverse("main:show_main"))
+   response.set_cookie('last_login', str(datetime.datetime.now()))
+   ``` 
+   Kegunaan HttpResponseRedirect di sini adalah mengarahkan ke show_main. Akan tetapi, last login belum bisa ditampilkan di website, oleh karena itu harus menambahkan `last_login` pada `context` dan ubah `struktur_html`
+   ```bash
+   context = {
+    'name': 'Pak Bepe',
+    'class': 'PBP A',
+    'products': products,
+    'last_login': request.COOKIES['last_login'],
+   }
+   <h5>Sesi terakhir login: {{ last_login }}</h5>
+   ```
 
  ### Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+ Pertama-tama, saya memastikan sudah terkoneksi dengan host lokal dengan mengaktifkan virtual environment dan menjalankan server di host lokal
+ ```bash
+ env\Scripts\activate.bat
+ py manage.py runserver
+ ```
+ Kemudian, saya memasukkan data inputan pada laman login yang terpampang pada aplikasi utama karena pengguna tidak bisa langsung mengakses inventori.
+
 
  ### Menghubungkan model Item dengan User.
+   Karena masing-masing pengguna memiliki database produk berbeda-beda, maka pada model Product perlu ditambahkan `user`
+   ```bash
+   class Product(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+   ```
+   ![Akun 1](akun1.png)
+   ![Akun 2](akun2.png)
+   ![Akun 3](akun3.png)
 
  ### Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
+Saya mmenampilkan informasi user yang sedang login pada navigation bar di `main.html` dengan kode berikut
+```bash
 
+            <div class="profile">
+                <p class="user">{{ name }}</p>
+                <i id="chevron" class="fa-solid fa-chevron-down" style="color: #b4b4b4; background-color: white;"></i>
+            </div>
+```
+sedangkan aktivitas login terakhir ditampilan berdampingan dengan button logout
+```bash
+<a href="{% url 'main:logout' %}" style="background-color: #ffffff;">
+   <button style="background-color: #e24c1d; color: #ffffff;">
+         Logout
+   </button>
+</a>
+                    
+```
 
 =======================================================================================================================================================================
 
