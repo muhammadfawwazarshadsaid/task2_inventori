@@ -6,6 +6,9 @@
 <body>
     <div class="padding">
     <nav class="fullnav">
+        <div class="menu-icon">
+            <i class="fa fa-bars" aria-hidden="true" style="background-color: #ffffff; padding: 8px; border-radius: 12px; border-width: 2px; border-style: solid; border-color: rgb(241,241,241);" ></i>
+        </div>
         <div class="logo">
             <!-- <img src="https://th.bing.com/th/id/R.6ad0fe976be696c1e6804c26a0b24e0c?rik=JF21H%2feXmlfXnQ&riu=http%3a%2f%2fmudvex.com%2fwp-content%2fuploads%2f2019%2f10%2flogo-12.png&ehk=H7KtZPbx18fPDvYg3nX7AfQ7vWFeNpZ9RcNSdNRKKrI%3d&risl=&pid=ImgRaw&r=0" alt="logo-brand"> -->
             <i class="fa-solid fa-cat" style="color: #ffffff; padding: 8px; border-radius: 8px; background-color: #e24c1d; margin-right: 8px;"></i>
@@ -66,7 +69,7 @@
                                 <a href="{% url 'main:decrement_amount' item.pk %}" style="display: flex; align-items: center; justify-content: center; background-color: #ffffff; text-decoration: none; padding: 8px;">
                                     <i class="fa fa-minus" aria-hidden="true" style="color: #0195eb; background-color: #ffffff; padding: 4px; border-radius: 2px; text-decoration: none; border-style: none; border-color: #0195eb;"></i>
                                 </a>
-                                <p class="table-content">{{ item.amount }}</p>
+                                <p class="table-content" style="width: 100%;">{{ item.amount }}</p>
                                 <a href="{% url 'main:increment_amount' item.pk %}" style="display: flex; align-items: center; justify-content: center; background-color: #ffffff; text-decoration: none; padding: 8px;">
                                     <i class="fa fa-plus" aria-hidden="true" style="color: #0195eb; background-color: #ffffff; padding: 4px; border-radius: 2px; text-decoration: none; border-style: none; border-color: #0195eb;"></i>
                                 </a>
@@ -75,10 +78,10 @@
                             <td style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
                                 <div class="action-group" style="padding-inline: 8px; padding-block: 16px; border-radius: 20px; background-color: #ffffff; display: flex; flex-direction: row;">
                                     <a href="{% url 'main:delete_product' item.pk %}" style="display: flex; align-items: center; justify-content: center; background-color: white;">
-                                        <i class="fa fa-trash" aria-hidden="true" style="color: #e24c1d; background-color: #ffd7cb; border-radius: 12px; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; padding: 12px; margin: 8px;"></i>
+                                        <i class="fa fa-trash" aria-hidden="true" style="color: #e24c1d; background-color: #ffd7cb; border-radius: 12px; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; padding: 4px; margin: 8px;"></i>
                                     </a>
                                     <a href="{% url 'main:edit_product' item.pk %}" style="display: flex; align-items: center; justify-content: center; background-color: white;">
-                                        <i class="fa fa-edit" aria-hidden="true" style="color: #ffffff; background-color: #0195eb; border-radius: 12px; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; padding: 12px; margin: 8px;"></i>
+                                        <i class="fa fa-edit" aria-hidden="true" style="color: #ffffff; background-color: #0195eb; border-radius: 12px; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; padding: 4px; margin: 8px;"></i>
                                     </a>
                                 </div>
                             </td>
