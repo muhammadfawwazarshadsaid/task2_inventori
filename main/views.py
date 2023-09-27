@@ -31,6 +31,7 @@ def show_main(request):
 
 def create_product(request):
     form = ProductForm(request.POST or None)
+    products = Product.objects.filter(user=request.user)
 
     if form.is_valid() and request.method == "POST":
         product = form.save(commit=False)
@@ -39,7 +40,12 @@ def create_product(request):
         product.save()
         return HttpResponseRedirect(reverse('main:show_main'))
 
-    context = {'form': form}
+    context = {
+        'products': products,
+        'form': form,
+        'name': request.user.username,
+        'last_login': request.COOKIES.get('last_login', 'No last login information available'),
+}
     return render(request, "create_product.html", context)
 
 def show_xml(request):
@@ -132,6 +138,7 @@ def decrement_amount(request, product_id):
 def edit_product(request, id):
     # Get product berdasarkan ID
     product = Product.objects.get(pk = id)
+    products = Product.objects.filter(user=request.user)
 
     # Set product sebagai instance dari form
     form = ProductForm(request.POST or None, instance=product)
@@ -141,5 +148,11 @@ def edit_product(request, id):
         form.save()
         return HttpResponseRedirect(reverse('main:show_main'))
 
-    context = {'form': form}
+    context = {
+        'products': products,
+        'form': form,
+        'name': request.user.username,
+        'last_login': request.COOKIES.get('last_login', 'No last login information available'),
+
+        }
     return render(request, "edit_product.html", context)

@@ -4,33 +4,8 @@
 {% block content %}
 
 <body>
-    <div class="padding">
-    <nav class="fullnav">
-        <div class="menu-icon">
-            <i class="fa fa-bars" aria-hidden="true" style="background-color: #ffffff; padding: 8px; border-radius: 12px; border-width: 2px; border-style: solid; border-color: rgb(241,241,241);" ></i>
-        </div>
-        <div class="logo">
-            <!-- <img src="https://th.bing.com/th/id/R.6ad0fe976be696c1e6804c26a0b24e0c?rik=JF21H%2feXmlfXnQ&riu=http%3a%2f%2fmudvex.com%2fwp-content%2fuploads%2f2019%2f10%2flogo-12.png&ehk=H7KtZPbx18fPDvYg3nX7AfQ7vWFeNpZ9RcNSdNRKKrI%3d&risl=&pid=ImgRaw&r=0" alt="logo-brand"> -->
-            <i class="fa-solid fa-cat" style="color: #ffffff; padding: 8px; border-radius: 8px; background-color: #e24c1d; margin-right: 8px;"></i>
-            <p class="name">Mumu</p>
-            <p class="name" style="color: #0195eb; font-weight: 800;">Miaw</p>
-        </div>
-        <div class="menu">
-            <section class="menu-content">
-                <a class="primary" href="#home">Tersedia</a>
-                <a class="secondary" href="#home">Terjual</a>
-            </section>
-            <i class="fa-solid fa-bell" style="color: rgb(226, 76, 29); background-color: white;"></i>
-            <span class="vertical-line">|
-            </span>
-            <div class="profile">
-                <p class="user">{{ name }}</p>
-                <i id="chevron" class="fa-solid fa-chevron-down" style="color: #b4b4b4; background-color: white;"></i>
-            </div>
-        </div>
-        
-    </nav> 
-    </div>
+    {% include 'navbar.html' %}
+    
     <div class="container">
         <div class="title-addproduct">
             <div class="head">

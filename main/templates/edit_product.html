@@ -1,0 +1,28 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+        <div style="box-sizing: border-box; padding-block: 200px; position: fixed; width: 100%; margin: -8px;  align-items: center; display: flex; flex-direction: column; border-style: none; background-color: rgba(102, 102, 102, 0.5);  margin: 0, auto; ">
+            
+            <form method="POST" class="form-add" style="background-color: #f1f1f1; display: flex; justify-content: center; padding: 40px; border-radius: 60px; flex-direction: column; ">
+                
+                <h1 class="add-new-prod" style="display: flex; justify-content: center; align-items: center; background-color: #f1f1f1;">Edit Product</h1>{% csrf_token %}
+                {{ form.as_table }}
+
+                <div style="background-color: #f1f1f1; display: flex; flex-direction: column;">
+                <td style="background-color: #0195eb;"><input class="btn" type="submit" value="Edit Product" style="width: 100%; align-items: center; color: white; background-color: #0195eb;margin-top: 40px; margin-bottom: 8px;"></td>
+                <button style=" align-items: center; color: white; background-color: white; display: flex;  margin-bottom: 8px; justify-content: center;">
+                    <i class="fa fa-chevron-left" aria-hidden="true" style="color: #0195eb; background-color: white; padding: 4px;"></i>
+                    <a href="/" style="text-decoration: none; color: black; background-color: #ffffff;">Kembali</a>
+                </button>
+                </div>
+                </form>
+                
+        </div>
+
+<div style="height: 100%; ">
+    {% include 'main.html' %}</div>
+    
+
+
+{% endblock %}
