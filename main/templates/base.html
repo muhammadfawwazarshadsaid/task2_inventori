@@ -19,17 +19,15 @@
         font-family: 'Poppins';
         background-color: rgb(241, 241, 241);
         .padding{
-            padding:60px;
+            padding-block:60px;
             justify-content: center;
             align-items: center;
             display: flex;
         }
     }
         @media screen and (max-width:948px){
-            .padding{
-            padding:36px;
-            justify-content: center;
-            align-items: center;
+        .padding{
+            padding-top:32px;
         }
         .fullnav{
             font-weight: 500;
@@ -37,12 +35,12 @@
             background-color: white;
             flex-direction: row;
             border-radius: 0px;
-            justify-content: space-between;
             display: flex;
             align-items: center;
             padding: 20px;
             position: fixed;
             width: 100%;
+            justify-content: center;
         }
         p.name{
             color: #E24C1D;
@@ -57,8 +55,8 @@
             align-items: center;
             display: flex;
             height: 100%;
-            width: 20%;
-            margin: 36px;
+            width: 100%;
+            padding-left: 28px;
         }
 
         .menu{
@@ -68,7 +66,7 @@
             height: 100%;
             justify-content: flex-end;
             width: 0%;
-            margin: 36px;
+            margin-right: 12px;
 
         }
 
@@ -92,7 +90,6 @@
             padding-inline: 12px;
             padding-block: 4px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
             border-style: solid;
             border-width: 2px;
@@ -115,40 +112,21 @@
         }
 
 
-        .container{
-            height: 1440px;
-        }
         .title-addproduct{
-            display: flex;
-            background-color: rgb(241,241,241);
-            margin: 60px;
-            display: flex;
-            flex-direction: column;
-            padding-top: 20px;
-            justify-content: space-between;
-            border-radius: 20px;
+            margin: 28px;
         
         }
 
-        .title-addproduct h1.container-title {
-            background-color: rgb(241,241,241);
-            border-radius: 20px;
-            margin: 0px;
-        }
-
         .title-addproduct p.container-desc {
-            background-color: rgb(241,241,241);
             color: #797979;
             margin-bottom: 60px;
-            border-radius: 20px;
         }
 
         .head{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+            flex-direction: column;
             background-color: rgb(241,241,241);
-            padding-inline: 60px;
+            display: flex;
+            width: 100%;
         }
 
         .head-content{
@@ -157,18 +135,17 @@
 
         .primary-button{
             background-color: rgb(241,241,241);
-            justify-content: center;
         }
 
         button{
             background-color: #ffffff;;
             padding-block: 16px;
             padding-inline: 20px;
-            border-width: 0px;
             border-radius: 20px;
             color: #000000;
             font-weight: 700;
             font-size: 16px;
+            width: 100%;
         }
 
         .table{
@@ -176,10 +153,18 @@
             justify-content: space-between;
             display: flex;
             flex-direction: column;
-            width: 100%;
+            width: auto;
             border-color: #ffffff;
             border-radius: 20px;
+            margin-top: 20px;
+            max-width: 100%;
+            overflow-x: auto;
             
+        }
+
+        .table-container{
+            overflow-x: auto;
+            max-width: 100%;
         }
 
         table{
