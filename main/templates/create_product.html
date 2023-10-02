@@ -2,50 +2,26 @@
 
 {% block content %}
 
-
-<div class="padding">
-    <nav class="fullnav">
-        <div class="menu-icon">
-            <i class="fa fa-bars" aria-hidden="true" style="background-color: #ffffff; padding: 8px; border-radius: 12px; border-width: 2px; border-style: solid; border-color: rgb(241,241,241);" ></i>
-        </div>
-        <div class="logo">
-            <!-- <img src="https://th.bing.com/th/id/R.6ad0fe976be696c1e6804c26a0b24e0c?rik=JF21H%2feXmlfXnQ&riu=http%3a%2f%2fmudvex.com%2fwp-content%2fuploads%2f2019%2f10%2flogo-12.png&ehk=H7KtZPbx18fPDvYg3nX7AfQ7vWFeNpZ9RcNSdNRKKrI%3d&risl=&pid=ImgRaw&r=0" alt="logo-brand"> -->
-            <i class="fa-solid fa-cat" style="color: #ffffff; padding: 8px; border-radius: 8px; background-color: #e24c1d; margin-right: 8px;"></i>
-            <p class="name">Mumu</p>
-            <p class="name" style="color: #0195eb; font-weight: 800;">Miaw</p>
-        </div>
-        <div class="menu">
-            <section class="menu-content">
-                <a class="primary" href="#home">Tersedia</a>
-                <a class="secondary" href="#home">Terjual</a>
-            </section>
-            <i class="fa-solid fa-bell" style="color: rgb(226, 76, 29); background-color: white;"></i>
-            <span class="vertical-line">|
-            </span>
-            <div class="profile">
-                <p class="user">{{ name }}</p>
-                <i id="chevron" class="fa-solid fa-chevron-down" style="color: #b4b4b4; background-color: white;"></i>
-            </div>
-        </div>
-        
-    </nav> 
-    </div>
-
-        <div style="padding: 80px;">
-            <button style="display: flex;">
-                <i class="fa fa-chevron-left" aria-hidden="true" style="color: #0195eb; background-color: #ffffff; padding: 4px; "></i>
-                <a href="/" style="text-decoration: none; color: black; background-color: #ffffff;">Kembali ke Inventori</a>
-            </button>
-            <h1 class="add-new-prod" style="background-color: rgb(235, 235, 235);">Add New Product</h1>
-            <form method="POST" class="form-add" style="background-color: #ffffff; display: flex; justify-content: center; padding: 40px; border-radius: 60px; flex-direction: column; ">
-                {% csrf_token %}
+        <div style="box-sizing: border-box; padding-block: 200px; position: fixed; width: 100%; margin: -8px;  align-items: center; display: flex; flex-direction: column; border-style: none; background-color: rgba(102, 102, 102, 0.5);  margin: 0, auto; ">
+            
+            <form method="POST" class="form-add" style="background-color: #f1f1f1; display: flex; justify-content: center; padding: 40px; border-radius: 60px; flex-direction: column; ">
+                
+                <h1 class="add-new-prod" style="display: flex; justify-content: center; align-items: center; background-color: #f1f1f1;">Add Product</h1>{% csrf_token %}
                 {{ form.as_table }}
-                <td style="background-color: #0195eb;"><input class="btn" type="submit" value="Add Product" style=" align-items: center; color: white; background-color: #0195eb;margin-block: 40px;"></td>
+
+                <div style="background-color: #f1f1f1; display: flex; flex-direction: column;">
+                <td style="background-color: #0195eb;"><input class="btn" type="submit" value="Add Product" style="width: 100%; align-items: center; color: white; background-color: #0195eb;margin-top: 40px; margin-bottom: 8px;"></td>
+                <button style=" align-items: center; color: white; background-color: white; display: flex;  margin-bottom: 8px; justify-content: center;">
+                    <i class="fa fa-chevron-left" aria-hidden="true" style="color: #0195eb; background-color: white; padding: 4px;"></i>
+                    <a href="/" style="text-decoration: none; color: black; background-color: #ffffff;">Kembali</a>
+                </button>
+                </div>
                 </form>
                 
         </div>
 
-
+<div style="height: 100%; ">
+    {% include 'main.html' %}</div>
     
 
 
