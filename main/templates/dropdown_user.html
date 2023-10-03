@@ -21,29 +21,29 @@
             <i class="fa-solid fa-bell" style="color: rgb(226, 76, 29); background-color: white;"></i>
             <span class="vertical-line">|
             </span>
-            <div class="profile">
-                <a href="" class="dropdown-user"></a>
-                    <p class="user">{{ name }}</p>
+            <div style="display: flex; flex-direction: column; background-color: #ffffff;">
+
+                <div class="profile" style="width: 72%; display: flex; background-color: #ffffff;">
+                    <p class="user" style="background-color: white;">{{ name }}</p>
                     <i id="chevron" class="fa-solid fa-chevron-down" style="color: #b4b4b4; background-color: white;"></i>
+                </div>
+                <div class="dropdown-user" style="position: absolute; background-color: #ffffff; height: 172px; width: 196px; margin-top: 80px; border-radius: 20px; border-color: #f0f0f0; border-style: solid; border-width: 2px;">
+                    <a href="" style="background-color: #ffffff; width: 100%; justify-content: center;">
+                        <button style="background-color: #ffffff; color: #888888; margin: 12px; justify-content: center; align-items: center; width: 86%; font-weight: 600; margin-right: 16px; justify-content: space-between;">
+                            <i class="fa fa-user" aria-hidden="true" style="background-color: #ffffff; color: #0195eb; margin: 8px;"></i>
+                            Profil Saya
+                        </button>
+                    </a>
+                    <a href="{% url 'main:logout' %}" style="background-color: #ffffff; width: 100%;">
+                        <button style="background-color: #e24c1d; color: #ffffff; margin: 12px; justify-content: center; align-items: center; width: 88%;">
+                            Logout
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
         
     </nav> 
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const profileButton = document.querySelector(".profile");
-          const dropdownUser = document.querySelector(".dropdown-user");
-      
-          profileButton.addEventListener("click", function () {
-            dropdownUser.classList.toggle("show");
-          });
-      
-          window.addEventListener("click", function (event) {
-            if (!event.target.matches(".profile") && !event.target.matches(".dropdown-user")) {
-              dropdownUser.classList.remove("show");
-            }
-          });
-        });
-      </script>
+
     {% endblock content %}
