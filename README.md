@@ -4,99 +4,99 @@
  ## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
 
  ### Universal Selector
- #### Universal selector bermanfaat untuk menyeleksi semua elemen dalam dokumen HTML tanpa terkecuali.
- #### Dari manfaat tersebut, penggunaan universal selector sangat jarang karena hanya untuk implementasi kondisi-kondisi umum saja seperti warna background utama.
+  Universal selector bermanfaat untuk menyeleksi semua elemen dalam dokumen HTML tanpa terkecuali.
+  Dari manfaat tersebut, penggunaan universal selector sangat jarang karena hanya untuk implementasi kondisi-kondisi umum saja seperti warna background utama.
 
  ### Type Selector
- #### Setiap elemen memiliki tag tertentu seperti <p> dan <a>. Type selector berguna untuk menyeleksi elemen-elemen yang menggunakan tipe tag tertentu.
- #### Type selector sangat cocok digunakan untuk membuat gaya semua elemen dari tag tertentu. Misalkan, font memiliki gaya tetap dengan jenis berbeda-beda, seperti <h1> <h2> sehingga semua elemen akan dibentuk seperti aturan tag tertentu.
+  Setiap elemen memiliki tag tertentu seperti <p> dan <a>. Type selector berguna untuk menyeleksi elemen-elemen yang menggunakan tipe tag tertentu.
+  Type selector sangat cocok digunakan untuk membuat gaya semua elemen dari tag tertentu. Misalkan, font memiliki gaya tetap dengan jenis berbeda-beda, seperti <h1> <h2> sehingga semua elemen akan dibentuk seperti aturan tag tertentu.
 
  ### Class selector (`.`)
- #### Di dalam markup HTML5, biasanya masing-masing elemen ditandai dengan `class` tertentu. Misalkan `<div class="contoh"></div>`. Maka semua elemen di `contoh` akan di-select menggunakan class selector menjadi `.contoh` sehingga style atau gaya elemen pada `class` tersebut diatur serupa.
- #### Class selector dapat digunakan ketika ingin membuat gaya pada suatu kelompok elemen tertentu, misalkan `class="section-utama"` akan di-styling pada css dengan format `.section-utama`.
+  Di dalam markup HTML5, biasanya masing-masing elemen ditandai dengan `class` tertentu. Misalkan `<div class="contoh"></div>`. Maka semua elemen di `contoh` akan di-select menggunakan class selector menjadi `.contoh` sehingga style atau gaya elemen pada `class` tersebut diatur serupa.
+  Class selector dapat digunakan ketika ingin membuat gaya pada suatu kelompok elemen tertentu, misalkan `class="section-utama"` akan di-styling pada css dengan format `.section-utama`.
 
  ### ID Selector (`#`)
- #### ID selector memiliki kegunaan yang mirip dengan class selector. Hanya saja, ID Selector digunakaan untuk menggaya elemen tunggal yang memiliki karakteristik khusus.
- #### ID selector cocok digunakan untuk mengaplikasikan gaya pada elemen-elemen unik yang ada di dokumen HTML seperti `#nama-id`.
+  ID selector memiliki kegunaan yang mirip dengan class selector. Hanya saja, ID Selector digunakaan untuk menggaya elemen tunggal yang memiliki karakteristik khusus.
+  ID selector cocok digunakan untuk mengaplikasikan gaya pada elemen-elemen unik yang ada di dokumen HTML seperti `#nama-id`.
 
  ### Attribute Selector (`[attribute]`)
- #### Attribute ini akan menyeleksi elemen berdasarkan atribut tertentu tanpa memedulikan nilainya.
- #### Atribut ini dapat digunakan di berbagai situasi. Misalkan,
- ##### Gaya elemen yang mengandung nilai tertentu 
- ##### `bash [title*="promo"] {font-weight: bold;}`
+  Attribute ini akan menyeleksi elemen berdasarkan atribut tertentu tanpa memedulikan nilainya.
+  Atribut ini dapat digunakan di berbagai situasi. Misalkan,
+  Gaya elemen yang mengandung nilai tertentu 
+  `bash [title*="promo"] {font-weight: bold;}`
 
  ### Pseudo-Class Selector(`:`)
- #### Bermanfaat untuk menambahkan gaya elemen pada suatu aksi.
- #### Dapat digunakan ketika terdapat aksi tertentu. Contohnya `hover` digunakan ketika kursor berada di atas suatu elemen.
+  Bermanfaat untuk menambahkan gaya elemen pada suatu aksi.
+  Dapat digunakan ketika terdapat aksi tertentu. Contohnya `hover` digunakan ketika kursor berada di atas suatu elemen.
 
  ### Pseudo-Element Selector(`::`)
- #### Jika ingin menambahkan konten sesudah maupun sebelum, selector ini cocok karena bisa memlih bagian spesifik dari elemen.
- #### Selector ini dapat digunakan ketika ingin menambahkan efek visual  ke dalam dokumen.
+  Jika ingin menambahkan konten sesudah maupun sebelum, selector ini cocok karena bisa memlih bagian spesifik dari elemen.
+  Selector ini dapat digunakan ketika ingin menambahkan efek visual  ke dalam dokumen.
 
 
  ## Jelaskan HTML5 Tag yang kamu ketahui.
 
  ### <header>
- #### Tag ini digunakan untuk mengelompokkan elemen-elemen yang menjadi komposisi introduksi dalam suatu laman web.
+  Tag ini digunakan untuk mengelompokkan elemen-elemen yang menjadi komposisi introduksi dalam suatu laman web.
 
  ### <nav> atau `navigation`
- #### Jika terdapat beberapa halaman dalam suatu website, maka nav bisa digunakan untuk mengelompokkan menu yang berisi halaman-halaman website.
+  Jika terdapat beberapa halaman dalam suatu website, maka nav bisa digunakan untuk mengelompokkan menu yang berisi halaman-halaman website.
 
  ### <section>
- #### Tag ini dapat mengelompokan elemen-elemen yang terjaring dalam suatu konten atau section pada laman website.
+  Tag ini dapat mengelompokan elemen-elemen yang terjaring dalam suatu konten atau section pada laman website.
 
  ### <div> atau `division`
- #### Tag yang sering dijumpai untuk mengatur elemen-elemen menjadi berkelomopok dalam suatu blok
+  Tag yang sering dijumpai untuk mengatur elemen-elemen menjadi berkelomopok dalam suatu blok
 
  ### <p> atau `paragraph`
- #### Tag ini berisi teks digunakan untuk menuliskan deskripsi atau menampilkan informasi bacaan dalam bentuk paragraf.
+  Tag ini berisi teks digunakan untuk menuliskan deskripsi atau menampilkan informasi bacaan dalam bentuk paragraf.
 
  ### <h> atau `heading`
- #### Tag ini berisi teks yang digunakan untuk membuat judul dan subjudul sebagai inti / klasifikasi konten.
+  Tag ini berisi teks yang digunakan untuk membuat judul dan subjudul sebagai inti / klasifikasi konten.
 
  ### <span> 
- #### Tag ini digunakan untuk memisahkan teks dalam suatu paragraf yang ingin diberikkan tampilan gaya atau highlight.
+  Tag ini digunakan untuk memisahkan teks dalam suatu paragraf yang ingin diberikkan tampilan gaya atau highlight.
 
  ### <table>
- #### Digunakan untuk membuat tabel
+  Digunakan untuk membuat tabel
  
  ### <th>
- #### Digunakan untuk membuat satu baris yang berisi header sebagai pengelompok sel-sel di bawahnya.
+  Digunakan untuk membuat satu baris yang berisi header sebagai pengelompok sel-sel di bawahnya.
 
  ### <tr>
- #### Digunakan untuk membuat baris pada tabel.
+  Digunakan untuk membuat baris pada tabel.
 
  ### <td>
- #### Digunakan untuk mendefinisikan isi sel-sel di bawah table head.
+  Digunakan untuk mendefinisikan isi sel-sel di bawah table head.
 
 
  ## Jelaskan perbedaan antara margin dan padding.
 
- #### Margin digunakan sebagai sekat yang membatasi jarak antarelemen, sedangkan padding digunakan sebagai jarak ujung-ujung di dalam elemen itu sendiri. Dalam hal ini, margin tidak memberikan warna background tambahan pada elemen, sedangkan padding terdapat warna di latar belakang elemen.
+  Margin digunakan sebagai sekat yang membatasi jarak antarelemen, sedangkan padding digunakan sebagai jarak ujung-ujung di dalam elemen itu sendiri. Dalam hal ini, margin tidak memberikan warna background tambahan pada elemen, sedangkan padding terdapat warna di latar belakang elemen.
 
 
  ## Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
  
  ### Tailwind
- #### Tailwind adalah framework CSS yang lebih baru daripada bootstrap yang dapat membuat rancangan tampilan.
+  Tailwind adalah framework CSS yang lebih baru daripada bootstrap yang dapat membuat rancangan tampilan.
 
  ### Bootstrap
- #### Bootstrap adalah framework CSS yang memberikan komponen tersistem yang sudah dibangun sebelumnya sehingga pengguna bisa pakai komponen tersebut secara langsung.
+  Bootstrap adalah framework CSS yang memberikan komponen tersistem yang sudah dibangun sebelumnya sehingga pengguna bisa pakai komponen tersebut secara langsung.
 
  ### Perbedaan Tailwind dan Bootstrap
- #### Tailwind memberikan kelas-kelas yang dapat digunakan untuk merancang kode HTML yang bisa membuat kustom desain dengan tampilan yang spesifik. Saat menggunakan Tailwind, pengguna perlu menulis kode dengan kelas-kelas pada HTML. 
- #### Bootstrap memberikan `templat` komponen siap saji seperti navigasi, tombol, dan kotak dialog sehingga pengguna tiddak perlu capek-capek menulis banyak kustom kode.
+  Tailwind memberikan kelas-kelas yang dapat digunakan untuk merancang kode HTML yang bisa membuat kustom desain dengan tampilan yang spesifik. Saat menggunakan Tailwind, pengguna perlu menulis kode dengan kelas-kelas pada HTML. 
+  Bootstrap memberikan `templat` komponen siap saji seperti navigasi, tombol, dan kotak dialog sehingga pengguna tiddak perlu capek-capek menulis banyak kustom kode.
 
  ### Kapan menggunakan Booostrap atau Tailwind? 
- #### Bootstrap berguna untuk membangun website dengan proyek yang cepat tanpa perlu memikirkan pembuatan sistem desain, tetapi karena proses yang cepat dan serba jadi tersebut pengguna tidak mengostumisasi tampilan. Sedangkan Tailwind digunakan untuk merancang tampilan yang ciamik dalam projek besar. Pengguna dapat mengostumisasi komponen-komponen secara spesifik sehingga proses pengerjaannya cenderung lebih lama dibanddingkan Tailwind. Berdasarkan klasifikasi tersebut, dapat disimpulkan Bootstrap cocok digunaakan pada proyek yang cepat dan tidak butuh pembuatan desain sistem, sedangkan Tailwind sebaliknya.
+  Bootstrap berguna untuk membangun website dengan proyek yang cepat tanpa perlu memikirkan pembuatan sistem desain, tetapi karena proses yang cepat dan serba jadi tersebut pengguna tidak mengostumisasi tampilan. Sedangkan Tailwind digunakan untuk merancang tampilan yang ciamik dalam projek besar. Pengguna dapat mengostumisasi komponen-komponen secara spesifik sehingga proses pengerjaannya cenderung lebih lama dibanddingkan Tailwind. Berdasarkan klasifikasi tersebut, dapat disimpulkan Bootstrap cocok digunaakan pada proyek yang cepat dan tidak butuh pembuatan desain sistem, sedangkan Tailwind sebaliknya.
 
 
  ## Kostumisasi CSS
- ### Pada tugas 5 ini, saya membuat tampilan menggunakan CSS biasa pada framework. Sebagian besar style saya terapkan gaya pada `base.html`, tetapi untuk beberapa kesempatan saya menaruh langsung di masing-masing laman HTML karena desain tidak bersebrangan (dalam artian di size manapun sama, saya memakai media queries). 
- ### Pada login, saya mengatur `display` menjadi `flex` supaya elemen dapat diatur posisinya. Dari situ, saya bisa mendapatkan posisi login di tengah karena mengaplikasikan `justify-content` dan `align-items`. Di masing-masing input dan button, saya membuat komponen dengan memerhatikan sizing menggunakan margin. Dalam hal ini, margin memberikan space antarelemen sehingga terdiferensiasi menjadi kesatuan terpisah. Pada register, saya juga melakukan hal yabng serupa
- ### Pada `main` saya membuat tampilan navbar dalam 2 breakpoints, yaitu maksimum 948px untuk mobile dan tablet serta minumum 948px untuk desktop, pc, laptop, dan lainnya yang beresolusi lebih dari itu. Saya menambahkan navbar, di mana bisa diklik pada dropdown sehingga pengguna bisa logout. Pada table list saya memberikan gaya pada `action` `hapus` dan `edit` serta `amount`. Saya memberikan kesan lengkung dengan menggunakan `border-radius` pada `action`. Untukk implementasinya, saya juga menggunakan `display: flex` agar bisa dikostumisasi secara horizontal line, seperti `justify-content: space-between` yang saya terapkan pada `action` sehingga elemen `delete` dan `edit` terpisah sejajar.
- ### Pada `edit_product`, saya memberikan kesan modal pop-up dengan cara memberikan background gelap pada tampilan utama sehingga terlihat seperti meng-highlight `edit_product` nya.
- ### Pada tag `a` saya mengatur ulang gaya dengan membuat `text-decoration: none` sehingga elemen tidak memiliki outline. Saya juga mengatur ulang kembali `color`nya.
+  Pada tugas 5 ini, saya membuat tampilan menggunakan CSS biasa pada framework. Sebagian besar style saya terapkan gaya pada `base.html`, tetapi untuk beberapa kesempatan saya menaruh langsung di masing-masing laman HTML karena desain tidak bersebrangan (dalam artian di size manapun sama, saya memakai media queries). 
+  Pada login, saya mengatur `display` menjadi `flex` supaya elemen dapat diatur posisinya. Dari situ, saya bisa mendapatkan posisi login di tengah karena mengaplikasikan `justify-content` dan `align-items`. Di masing-masing input dan button, saya membuat komponen dengan memerhatikan sizing menggunakan margin. Dalam hal ini, margin memberikan space antarelemen sehingga terdiferensiasi menjadi kesatuan terpisah. Pada register, saya juga melakukan hal yabng serupa
+  Pada `main` saya membuat tampilan navbar dalam 2 breakpoints, yaitu maksimum 948px untuk mobile dan tablet serta minumum 948px untuk desktop, pc, laptop, dan lainnya yang beresolusi lebih dari itu. Saya menambahkan navbar, di mana bisa diklik pada dropdown sehingga pengguna bisa logout. Pada table list saya memberikan gaya pada `action` `hapus` dan `edit` serta `amount`. Saya memberikan kesan lengkung dengan menggunakan `border-radius` pada `action`. Untukk implementasinya, saya juga menggunakan `display: flex` agar bisa dikostumisasi secara horizontal line, seperti `justify-content: space-between` yang saya terapkan pada `action` sehingga elemen `delete` dan `edit` terpisah sejajar.
+  Pada `edit_product`, saya memberikan kesan modal pop-up dengan cara memberikan background gelap pada tampilan utama sehingga terlihat seperti meng-highlight `edit_product` nya.
+  Pada tag `a` saya mengatur ulang gaya dengan membuat `text-decoration: none` sehingga elemen tidak memiliki outline. Saya juga mengatur ulang kembali `color`nya.
 
 
 
