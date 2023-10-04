@@ -4,12 +4,78 @@
 {% block content %}
 
 <body>
-    {% include 'navbar.html' %}
-    
+<div class="padding">
+    <nav class="fullnav" >
+        <div class="menu-icon">
+            <i class="fa fa-bars" aria-hidden="true" style="background-color: #ffffff; padding: 8px; border-radius: 12px; border-width: 2px; border-style: solid; border-color: rgb(241,241,241);" ></i>
+        </div>
+        <div class="logo">
+            <!-- <img src="https://th.bing.com/th/id/R.6ad0fe976be696c1e6804c26a0b24e0c?rik=JF21H%2feXmlfXnQ&riu=http%3a%2f%2fmudvex.com%2fwp-content%2fuploads%2f2019%2f10%2flogo-12.png&ehk=H7KtZPbx18fPDvYg3nX7AfQ7vWFeNpZ9RcNSdNRKKrI%3d&risl=&pid=ImgRaw&r=0" alt="logo-brand"> -->
+            <i class="fa-solid fa-cat" style="color: #ffffff; padding: 8px; border-radius: 8px; background-color: #e24c1d; margin-right: 8px;"></i>
+            <p class="name">Mumu</p>
+            <p class="name" style="color: #0195eb; font-weight: 800;">Miaw</p>
+        </div>
+        <div class="menu">
+            <section class="menu-content">
+                <a class="primary" href="#home">Tersedia</a>
+                <a class="secondary" href="#home">Terjual</a>
+            </section>
+            <i class="fa-solid fa-bell" style="color: rgb(226, 76, 29); background-color: white;"></i>
+            <span class="vertical-line">|
+            </span>
+            <a href="{% url 'main:show_main' %}" style="display: flex; flex-direction: row; text-decoration: none; justify-content: space-between; align-items: center; background-color: #ffffff; color: black; width: 0%; height: 0%; margin-right: 20px;">
+            <div style="display: flex; flex-direction: column; background-color: #ffffff;">
+
+                <a href="{% url 'main:show_main' %}" style="display: flex; flex-direction: row; text-decoration: none; justify-content: space-between; align-items: center; background-color: #ffffff; color: black; width: 100%;">
+                <div class="profile" style="width: 72%; display: flex; background-color: #ffffff;">
+                    
+                    <p class="user" style="background-color: white;">{{ name }}</p>
+                    <a href="{% url 'main:dropdown_user' %}" style="display: flex; flex-direction: row; text-decoration: none; justify-content: space-between; align-items: center; background-color: #ffffff; color: black; width: 0%; height: 0%; margin-right: 20px;">
+                    <i id="chevron" class="fa-solid fa-chevron-down" style="position: absolute; color: #b4b4b4; background-color: white; color: black; background-color: white;"></i>
+                    
+                    
+                    <!-- <div class="dropdown-user" style="position: absolute; background-color: #ffffff; height: 172px; min-width: 0px; max-width: 400px; margin-top: 280px; margin-left: -100px; border-radius: 20px; border-color: #f0f0f0; border-style: solid; border-width: 2px; visibility: hidden;">
+                        <a href="" style="background-color: #ffffff; width: 100%; justify-content: center;">
+                            <button style="background-color: #ffffff; color: #888888; margin: 12px; justify-content: center; align-items: center; width: 86%; font-weight: 600; margin-right: 16px; justify-content: space-between;">
+                                <i class="fa fa-user" aria-hidden="true" style="background-color: #ffffff; color: #0195eb; margin: 8px;"></i>
+                                Profil Saya
+                            </button>
+                        </a>
+                        <a href="{% url 'main:logout' %}" style="background-color: #ffffff; width: 100%; ">
+                            <button style="background-color: #e24c1d; color: #ffffff; margin: 12px; justify-content: center; align-items: center; width: 88%;">
+                                Logout
+                            </button>
+                        </a>
+                    </div> -->
+                    </a>
+                
+                </div>
+                </a>
+                <!-- <div class="dropdown-user" style="position: absolute; background-color: #ffffff; height: 172px; min-width: 40px; max-width: 400px; margin-top: 80px; margin-left: -100px; border-radius: 20px; border-color: #f0f0f0; border-style: solid; border-width: 2px; visibility: hidden;">
+                    <a href="" style="background-color: #ffffff; width: 100%; justify-content: center;">
+                        <button style="background-color: #ffffff; color: #888888; margin: 12px; justify-content: center; align-items: center; width: 86%; font-weight: 600; margin-right: 16px; justify-content: space-between; visibility: hidden;">
+                            <i class="fa fa-user" aria-hidden="true" style="background-color: #ffffff; color: #0195eb; margin: 8px;"></i>
+                            Profil Saya
+                        </button>
+                    </a>
+                    <a href="{% url 'main:logout' %}" style="background-color: #ffffff; width: 100%; visibility: hidden;">
+                        <button style="background-color: #e24c1d; color: #ffffff; margin: 12px; justify-content: center; align-items: center; width: 88%;">
+                            Logout
+                        </button>
+                    </a>
+                </div> -->
+            </div>
+        </div>
+        
+    </nav> 
+    </div>
+
     <div class="container">
         <div class="title-addproduct">
             <div class="head">
                 <div class="head-content">
+                    <h5 style="font-weight: 500; color: #b4b4b4; background-color: #f1f1f1; display: flex; margin: 0; margin-bottom: 40px; width: auto;">Sesi terakhir login: {{ last_login }}</h5>
+
                     <h1 class="container-title">Produk Tersedia</h1>
                     <p class="container-desc">Produk yang masih ada dalam inventori berjumlah {{ products|length }}.</p>
                 </div>
@@ -78,7 +144,7 @@
 
                 </table>
             </div>
-            <div style="display: flex; flex-direction: row; justify-content: space-between; padding-top: 20px; background-color: rgb(241,241,241);">
+            <!-- <div style="display: flex; flex-direction: row; justify-content: space-between; padding-top: 20px; background-color: rgb(241,241,241);">
                 <div style="display: flex; flex-direction: row; justify-content: space-between; border-radius: 24px; align-items: center; width: 100%; padding: 20px; background-color: #ffffff;">
                     <h5 style="font-weight: 500; color: #b4b4b4; background-color: #ffffff;">Sesi terakhir login: {{ last_login }}</h5>
                     <a href="{% url 'main:logout' %}" style="background-color: #ffffff;">
@@ -89,7 +155,7 @@
                     
                 </div>
                 
-            </div>
+            </div> -->
         </div>
     </div>
 </body>

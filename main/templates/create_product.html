@@ -2,12 +2,19 @@
 
 {% block content %}
 
-        <div style="box-sizing: border-box; padding-block: 200px; position: fixed; width: 100%; margin: -8px;  align-items: center; display: flex; flex-direction: column; border-style: none; background-color: rgba(102, 102, 102, 0.5);  margin: 0, auto; ">
+        <div style="box-sizing: border-box; padding-block: 120px; position: fixed; width: 100%; margin: -8px;  align-items: center; display: flex; flex-direction: column; border-style: none; background-color: rgba(102, 102, 102, 0.5);  margin: 0, auto; ">
             
-            <form method="POST" class="form-add" style="background-color: #f1f1f1; display: flex; justify-content: center; padding: 40px; border-radius: 60px; flex-direction: column; ">
+            <form method="POST" class="form-add" style="background-color: #f1f1f1; display: flex; padding: 40px; justify-content: center; border-radius: 60px; flex-direction: column; ">
                 
                 <h1 class="add-new-prod" style="display: flex; justify-content: center; align-items: center; background-color: #f1f1f1;">Add Product</h1>{% csrf_token %}
-                {{ form.as_table }}
+                <table style="display: flex; flex-direction: column; background-color: #f1f1f1;">
+                    {% for field in form %}
+                    <tr style="display: flex; flex-direction: column; ">
+                        <th style="background-color: #f1f1f1; display: flex; ">{{ field.label_tag }}</th>
+                        <td class="my-custom-td-class" style="background-color: #f1f1f1; padding-left: 0px; padding-bottom: 8px; display: flex; width: 100%;">{{ field }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
 
                 <div style="background-color: #f1f1f1; display: flex; flex-direction: column;">
                 <td style="background-color: #0195eb;"><input class="btn" type="submit" value="Add Product" style="width: 100%; align-items: center; color: white; background-color: #0195eb;margin-top: 40px; margin-bottom: 8px;"></td>

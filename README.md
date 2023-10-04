@@ -90,7 +90,13 @@
  ### Kapan menggunakan Booostrap atau Tailwind? 
  #### Bootstrap berguna untuk membangun website dengan proyek yang cepat tanpa perlu memikirkan pembuatan sistem desain, tetapi karena proses yang cepat dan serba jadi tersebut pengguna tidak mengostumisasi tampilan. Sedangkan Tailwind digunakan untuk merancang tampilan yang ciamik dalam projek besar. Pengguna dapat mengostumisasi komponen-komponen secara spesifik sehingga proses pengerjaannya cenderung lebih lama dibanddingkan Tailwind. Berdasarkan klasifikasi tersebut, dapat disimpulkan Bootstrap cocok digunaakan pada proyek yang cepat dan tidak butuh pembuatan desain sistem, sedangkan Tailwind sebaliknya.
 
- 
+
+ ## Kostumisasi CSS
+ ### Pada tugas 5 ini, saya membuat tampilan menggunakan CSS biasa pada framework. Sebagian besar style saya terapkan gaya pada `base.html`, tetapi untuk beberapa kesempatan saya menaruh langsung di masing-masing laman HTML karena desain tidak bersebrangan (dalam artian di size manapun sama, saya memakai media queries). 
+ ### Pada login, saya mengatur `display` menjadi `flex` supaya elemen dapat diatur posisinya. Dari situ, saya bisa mendapatkan posisi login di tengah karena mengaplikasikan `justify-content` dan `align-items`. Di masing-masing input dan button, saya membuat komponen dengan memerhatikan sizing menggunakan margin. Dalam hal ini, margin memberikan space antarelemen sehingga terdiferensiasi menjadi kesatuan terpisah. Pada register, saya juga melakukan hal yabng serupa
+ ### Pada `main` saya membuat tampilan navbar dalam 2 breakpoints, yaitu maksimum 948px untuk mobile dan tablet serta minumum 948px untuk desktop, pc, laptop, dan lainnya yang beresolusi lebih dari itu. Saya menambahkan navbar, di mana bisa diklik pada dropdown sehingga pengguna bisa logout. Pada table list saya memberikan gaya pada `action` `hapus` dan `edit` serta `amount`. Saya memberikan kesan lengkung dengan menggunakan `border-radius` pada `action`. Untukk implementasinya, saya juga menggunakan `display: flex` agar bisa dikostumisasi secara horizontal line, seperti `justify-content: space-between` yang saya terapkan pada `action` sehingga elemen `delete` dan `edit` terpisah sejajar.
+ ### Pada `edit_product`, saya memberikan kesan modal pop-up dengan cara memberikan background gelap pada tampilan utama sehingga terlihat seperti meng-highlight `edit_product` nya.
+ ### Pada tag `a` saya mengatur ulang gaya dengan membuat `text-decoration: none` sehingga elemen tidak memiliki outline. Saya juga mengatur ulang kembali `color`nya.
 
 
 

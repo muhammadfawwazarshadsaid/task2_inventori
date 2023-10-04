@@ -48,6 +48,29 @@ def create_product(request):
 }
     return render(request, "create_product.html", context)
 
+
+def register(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
+
+        if password == confirm_password:
+            if User.objects.filter(username=username).exists():
+                messages.info(request, 'Username taken')
+                return redirect('main:register')
+            else:
+                user = User.objects.create_user(username=username, password=password)
+                user.save()
+                messages.success(request, 'Your account has been successfully created!')
+                return redirect('main:login')
+
+        else:
+            messages.info(request, 'Password not matching..')
+            return redirect('main:register')
+    else:
+        return render(request, 'register.html')
+        
 def show_xml(request):
     data = Product.objects.all()
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
@@ -95,6 +118,18 @@ def logout_user(request):
     return redirect('main:login')
 
 
+def dropdown_user(request):
+    products = Product.objects.filter(user=request.user)
+    context = {
+        'products': products,
+        'name': request.user.username,
+        'last_login': request.COOKIES.get('last_login', 'No last login information available'),
+
+        }
+
+    return render(request, "dropdown_user.html", context)
+
+
 from django.shortcuts import get_object_or_404
 
 def delete_product(request, product_id):
@@ -121,6 +156,7 @@ def increment_amount(request, product_id):
     # Check if the user has permission to update the product
     if request.user == product.user:
         product.amount += 1
+        product.date = (datetime.datetime.now())
         product.save()
     
     return redirect('main:show_main')
@@ -129,9 +165,13 @@ def decrement_amount(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
     # Check if the user has permission to update the product
-    if request.user == product.user and product.amount > 0:
+    if request.user == product.user and product.amount > 1:
         product.amount -= 1
+        product.date = (datetime.datetime.now())
         product.save()
+    
+    elif product.amount<=1:
+        product.delete()
 
     return redirect('main:show_main')
 
