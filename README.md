@@ -38,9 +38,101 @@ c. Tidak sefleksibel dan ringan seperti Fetch API.
 
 Di sisi lain, jQuery AJAX adalah teknologi lain yang digunakan untuk mengambil data dari server secara asynchronous. jQuery AJAX menggunakan XMLHttpRequest object untuk mengirim permintaan ke server. Namun, seiring perkembangan teknologi web, penggunaan jQuery semakin berkurang karena keunggulan yang dimiliki oleh Fetch API dan berbagai API asinkron modern lainnya. Menurut pendapat saya, Fetch API adalah pilihan yang lebih baik daripada jQuery AJAX karena lebih mudah digunakan, memiliki sintaks yang lebih sederhana, dan lebih cocok dengan pengembangan web modern. Pilihan teknologi tetap bergantung pada kebutuhan proyek dan preferensi tim pengembangan.
 
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+1. Pertama-tama, saya membuat dummy card kosongan pada laman baru bernama `preview_product.html`. Adapun saya membuat antarcard menjadi auto add ke kolom baru jika sudah memenuhi kpasitas dengan menggunakan `flex-wrap: wrap`. Pada card, saya tidak menampilkan keseluruhan informasi, melainkan beberapa model saja yang saya teapkan, seperti nama produk, harga, increment-decrement amount, dan hapus produk.
+
+2. Kemudian, saya mencoba menambahkan introduction bootstrap agar modal ajax bisa terimplementasikan:
+```bash
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+```
+
+3. Lalu, agar produk bisa ditampilkan di html sama membuat fungsi baru
+```bash
+def get_product_json(request):
+    product_item = Product.objects.all()
+    return HttpResponse(serializers.serialize('json', product_item))
+```
+
+4. Kemudian, saya membuat fungsi add_product_ajax:
+```bash
+@csrf_exempt
+def add_product_ajax(request):
+if request.method == 'POST':
+    name = request.POST.get("name")
+    price = request.POST.get("price")
+    description = request.POST.get("description")
+    user = request.user
+
+    new_product = Product(name=name, price=price, description=description, user=user)
+    new_product.save()
+
+    return HttpResponse(b"CREATED", status=201)
+
+return HttpResponseNotFound()
+```
+Kode mengambil data yang dikirim melalui permintaan POST, seperti nama produk, harga, deskripsi, dan informasi pengguna yang sedang masuk. Data tersebut digunakan untuk membuat objek Product yang kemudian disimpan dalam basis data. Jika penyimpanan berhasil, kode mengirimkan respons "CREATED" dengan status 201. Jika ada masalah atau permintaan bukan POST, kode akan mengirim respons "Not Found".
+
+5. Lalu, saya mengatur path dengan membuat endpoint.
+```bash
+path('get-product/', get_product_json, name='get_product_json'),
+path('create-product-ajax/', add_product_ajax, name='add_product_ajax')
+```
+Dalam hal ini, get_product_json akan digunakan untuk mengambil data produk dalam format JSON, dan add_product_ajax akan digunakan untuk menambahkan produk baru melalui permintaan AJAX.
 
 
+6. Kemudian, saya menambahkan script berikut:
+```bash
+   <script>
+         async function getProducts() {
+               return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+         }
+         async function refreshProducts() {
+         document.getElementById("product_table").innerHTML = ""
+         const products = await getProducts()
+         let htmlString = `<tr>
+               <th>Name</th>
+               <th>Price</th>
+               <th>Amount</th>
+               <th>Description</th>
+               <th>Date Added</th>
+         </tr>`
+         products.forEach((item) => {
+               htmlString += `\n<tr>
+               <td>${item.fields.name}</td>
+               <td>${item.fields.price}</td>
+               <td>${item.fields.amount}</td>
+               <td>${item.fields.description}</td>
+               <td>${item.fields.date_added}</td>
+         </tr>` 
+         })
+         
+         document.getElementById("product_table").innerHTML = htmlString
+      }
 
+      refreshProducts()
+
+      function addProduct() {
+         fetch("{% url 'main:add_product_ajax' %}", {
+               method: "POST",
+               body: new FormData(document.querySelector('#form'))
+         }).then(refreshProducts)
+
+         document.getElementById("form").reset()
+         return false
+      }
+      document.getElementById("button_add").onclick = addProduct
+   </script>
+```
+Pertama, ada fungsi getProducts(). Fungsi ini bertugas untuk mengambil data produk dari server. Ketika dijalankan, ia membuat sebuah permintaan ke URL yang dihasilkan oleh Django dengan bantuan templatetag {% url 'main:get_product_json' %}. Setelah itu, ia menunggu respons dari server, yang berisi daftar produk, dan kemudian mengonversinya menjadi format JSON. Hasilnya adalah daftar produk dalam bentuk yang dapat digunakan dalam halaman web.
+
+Kemudian, ada fungsi refreshProducts(). Fungsi ini bertanggung jawab untuk menampilkan daftar produk ke dalam tabel di halaman web. Saat dijalankan, pertama-tama ia mengosongkan isi dari elemen HTML dengan ID "product_table" untuk memastikan bahwa daftar produk yang lama tidak bertahan. Setelah itu, ia memanggil fungsi getProducts() untuk mendapatkan daftar produk dari server dan mengonversinya menjadi format HTML. Setelah selesai, ia mengisi kembali elemen "product_table" dengan HTML yang baru, sehingga daftar produk ditampilkan dalam tabel.
+
+Fungsi refreshProducts() juga dipanggil secara otomatis saat halaman web dimuat, sehingga daftar produk akan ditampilkan segera setelah halaman web dibuka.
+
+Selanjutnya, ada fungsi addProduct(). Fungsi ini digunakan untuk menambahkan produk baru ke server. Ketika tombol dengan ID "button_add" diklik, fungsi ini dijalankan. Pertama, ia membuat permintaan POST ke URL yang dihasilkan oleh Django dengan templatetag {% url 'main:add_product_ajax' %}. Ia juga mengambil data formulir dari elemen HTML dengan ID "form". Setelah berhasil menambahkan produk, ia memanggil kembali fungsi refreshProducts() untuk memperbarui tampilan produk. Selain itu, ia juga mengosongkan formulir dengan mengatur ulang elemen "form". Akhirnya, untuk mencegah formulir mengirim ulang halaman, ia mengembalikan false.
+
+6. Setelah kode terkonfigurasi dan dapat dijalankan, kemudian saya push ke github.
 
 # Tugas 5
 

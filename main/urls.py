@@ -26,5 +26,6 @@ urlpatterns = [
     path('dropdown_user/', dropdown_user, name='dropdown_user'),
     path('get-product/', get_product_json, name='get_product_json'),
     path('create-product-ajax/', add_product_ajax, name='add_product_ajax')
+    
 
 ]
