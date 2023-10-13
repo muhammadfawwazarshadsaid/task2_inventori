@@ -1,0 +1,190 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form" onsubmit="return false;">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="col-form-label">Price:</label>
+                            <input type="number" class="form-control" id="price" name="price"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="col-form-label">Amount:</label>
+                            <input type="number" class="form-control" id="amount" name="amount"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="col-form-label">Description:</label>
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="padding" style="flex-direction: column; padding-inline: 32px; padding-block: 24px;">
+    <nav style="display: flex; width: 100%; background-color: white; height: 84px; border-radius: 16px; ">
+        <div class="logo" style="margin-inline: 20px; display: flex; align-items: center; justify-content: space-between;">
+            <i class="fa-solid fa-cat" style="color: #ffffff; padding: 8px; border-radius: 8px; background-color: #e24c1d; margin-right: 8px;"></i>
+            <p class="name" style="align-items: center; justify-content: center; margin: 0px;">Mumu</p>
+            <p class="name" style="color: #0195eb; font-weight: 800; margin: 0px;">Miaw</p>
+        </div>
+        <div class="menu">
+            <section class="menu-content">
+                <a class="secondary" href="{% url 'main:show_main' %}">Database</a>
+                <a class="primary" href="{% url 'main:preview_product' %}">Preview Pengguna</a>
+            </section>
+            <i class="fa-solid fa-bell" style="color: rgb(226, 76, 29); background-color: white;"></i>
+            <span class="vertical-line">|
+            </span>
+            <a href="{% url 'main:show_main' %}" style="display: flex; flex-direction: row; text-decoration: none; justify-content: space-between; align-items: center; background-color: #ffffff; color: black; width: 0%; height: 0%; margin-right: 20px;">
+            <div style="display: flex; flex-direction: column; background-color: #ffffff;">
+
+                <a href="{% url 'main:show_main' %}" style="display: flex; flex-direction: row; text-decoration: none; justify-content: space-between; align-items: center; background-color: #ffffff; color: black; width: 100%;">
+                <div class="profile" style="width: 72%; display: flex; background-color: #ffffff;">
+                    
+                    <p class="user" style="background-color: white;">{{ name }}</p>
+                    <a href="{% url 'main:dropdown_user' %}" style="display: flex; flex-direction: row; text-decoration: none; justify-content: space-between; align-items: center; background-color: #ffffff; color: black; width: 0%; height: 0%; margin-right: 20px;">
+                    <i id="chevron" class="fa-solid fa-chevron-down" style="position: absolute; color: #b4b4b4; background-color: white; color: black; background-color: white;"></i>
+                    
+                    
+                    <!-- <div class="dropdown-user" style="position: absolute; background-color: #ffffff; height: 172px; min-width: 0px; max-width: 400px; margin-top: 280px; margin-left: -100px; border-radius: 20px; border-color: #f0f0f0; border-style: solid; border-width: 2px; visibility: hidden;">
+                        <a href="" style="background-color: #ffffff; width: 100%; justify-content: center;">
+                            <button style="background-color: #ffffff; color: #888888; margin: 12px; justify-content: center; align-items: center; width: 86%; font-weight: 600; margin-right: 16px; justify-content: space-between;">
+                                <i class="fa fa-user" aria-hidden="true" style="background-color: #ffffff; color: #0195eb; margin: 8px;"></i>
+                                Profil Saya
+                            </button>
+                        </a>
+                        <a href="{% url 'main:logout' %}" style="background-color: #ffffff; width: 100%; ">
+                            <button style="background-color: #e24c1d; color: #ffffff; margin: 12px; justify-content: center; align-items: center; width: 88%;">
+                                Logout
+                            </button>
+                        </a>
+                    </div> -->
+                    </a>
+                
+                </div>
+                </a>
+                <!-- <div class="dropdown-user" style="position: absolute; background-color: #ffffff; height: 172px; min-width: 40px; max-width: 400px; margin-top: 80px; margin-left: -100px; border-radius: 20px; border-color: #f0f0f0; border-style: solid; border-width: 2px; visibility: hidden;">
+                    <a href="" style="background-color: #ffffff; width: 100%; justify-content: center;">
+                        <button style="background-color: #ffffff; color: #888888; margin: 12px; justify-content: center; align-items: center; width: 86%; font-weight: 600; margin-right: 16px; justify-content: space-between; visibility: hidden;">
+                            <i class="fa fa-user" aria-hidden="true" style="background-color: #ffffff; color: #0195eb; margin: 8px;"></i>
+                            Profil Saya
+                        </button>
+                    </a>
+                    <a href="{% url 'main:logout' %}" style="background-color: #ffffff; width: 100%; visibility: hidden;">
+                        <button style="background-color: #e24c1d; color: #ffffff; margin: 12px; justify-content: center; align-items: center; width: 88%;">
+                            Logout
+                        </button>
+                    </a>
+                </div> -->
+            </div>
+        </div>
+        
+    </nav>
+    
+    <div class="content-pp" style="padding-block: 20px; width: 100%; border-radius: 32px; background-color: rgb(241, 241, 241); padding-inline: 20px; margin-block: 20px;">
+        <div class="head" style="background-color: rgb(241, 241, 241); width: 100%; padding: 40px; display: flex; flex-direction: row; justify-content: space-between;">
+            <h4 style="padding: 0px; font-weight: 700; background-color: rgb(241, 241, 241);">Katalog Produk</h1>
+                <div class="search" style="border-radius: 20px; background-color: #dfdfdf; align-items: center; display: flex; justify-content: center; padding: 0px; margin: 0px; color: #a3a3a3; width: 40%;"><i class="fa fa-search" aria-hidden="true" style="color: #b4b4b4; background-color: #dfdfdf; padding: 4px;"></i>Temukan produk... </button></div>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #ffffff; padding: 16px; color: black; font-weight: 700; border-radius: 20px; border: none;">Add Product by AJAX 
+                <i class="fa fa-plus" aria-hidden="true" style="color: #0195eb; background-color: #ffffff; padding: 4px;"></i>
+            </button>
+        </div>
+        <div class="card-item" style="display: flex; flex-direction: row; padding-inline: 40px; flex-wrap: wrap; background-color: rgb(241, 241, 241);">
+            
+            {% for item in products %}
+            <div class="card" style="width: 200px; height: auto; border-radius: 20px; margin: 20px; border: none; flex-direction: column; background-color: #f5f5f5; border-style: solid; border-color: #f0f0f0; border-width: 2px; justify-content: flex-end; justify-content: space-between;">
+                
+                <a href="{% url 'main:delete_product' item.pk %}" style="display: flex; background-color: #f5f5f5; border-radius: 20px; flex-direction: row-reverse; margin: 12px;">
+                    <i class="fa fa-trash" aria-hidden="true" style="color: #e24c1d; background-color: #ffd7cb; border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 8px; margin: 8px;"></i>
+                </a>
+                <div class="amount" style="display: flex; flex-direction: row; margin-top: 60px; background-color: #f5f5f5; align-items: center; margin-inline: 12px; margin-bottom: 12px;">
+                    <a href="{% url 'main:decrement_amount' item.pk %}" style="background-color: #ffffff; padding: 8px; display: flex; align-items: center; justify-content: center; background-color: #ffffff; text-decoration: none; padding: 8px; border-radius: 12px;">
+                        <i class="fa fa-minus" aria-hidden="true" style="background-color: #ffffff;"></i>
+                    </a>
+                    <p class="table-content" style="display: flex; align-items: center; justify-content: center; margin-inline: 12px; margin-top: 16px; height: 100%; background-color: #f5f5f5;">{{ item.amount }}</p>
+                    <a href="{% url 'main:increment_amount' item.pk %}" style="background-color: #ffffff; padding: 8px; display: flex; align-items: center; justify-content: center; background-color: #ffffff; text-decoration: none; padding: 8px; border-radius: 12px;">
+                        <i class="fa fa-plus" aria-hidden="true" style="background-color: #ffffff;"></i>
+                    </a>
+                </div>
+
+                <div class="head-content" style="background-color: #ffffff; padding-inline: 12px; padding-top: 12px; background-color: #ffffff;  border-radius: 20px; height: auto;">
+                    
+                    <p style="padding-inline: 12px; background-color: #ffffff; font-size: 16px; color: #0195eb; font-weight: 900; padding-top: 8px; padding-bottom: 0px;">Rp{{ item.price }}</p>
+                    <p style=" padding-inline: 12px; font-weight: 700; background-color: white;">{{ item.name }}</p>
+                </div>
+                
+                
+                
+            </div>
+            
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    
+
+</body>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script>
+        async function getProducts() {
+            return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+        }
+        async function refreshProducts() {
+        document.getElementById("product_table").innerHTML = ""
+        const products = await getProducts()
+        let htmlString = `<tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Date Added</th>
+        </tr>`
+        products.forEach((item) => {
+            htmlString += `\n<tr>
+            <td>${item.fields.name}</td>
+            <td>${item.fields.price}</td>
+            <td>${item.fields.amount}</td>
+            <td>${item.fields.description}</td>
+            <td>${item.fields.date_added}</td>
+        </tr>` 
+        })
+        
+        document.getElementById("product_table").innerHTML = htmlString
+    }
+
+    refreshProducts()
+
+    function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    document.getElementById("button_add").onclick = addProduct
+    </script>
+{% endblock content %}
+    

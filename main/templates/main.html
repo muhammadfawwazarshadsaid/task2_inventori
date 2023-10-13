@@ -4,6 +4,7 @@
 {% block content %}
 
 <body>
+    
 <div class="padding">
     <nav class="fullnav" >
         <div class="menu-icon">
@@ -17,8 +18,8 @@
         </div>
         <div class="menu">
             <section class="menu-content">
-                <a class="primary" href="#home">Tersedia</a>
-                <a class="secondary" href="#home">Terjual</a>
+                <a class="primary" href="{% url 'main:show_main' %}">Database</a>
+                <a class="secondary" href="{% url 'main:preview_product' %}">Preview Pengguna</a>
             </section>
             <i class="fa-solid fa-bell" style="color: rgb(226, 76, 29); background-color: white;"></i>
             <span class="vertical-line">|
@@ -89,6 +90,7 @@
                 </div>
             </div>
             <div class="table">
+                
                 <table>
                     <tr class="table-head">
                         <th><p class="table-head">No.</p></th>
@@ -159,5 +161,6 @@
         </div>
     </div>
 </body>
+
 
 {% endblock content %}
