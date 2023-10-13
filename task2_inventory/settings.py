@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'task2_inventori.urls'
+ROOT_URLCONF = 'task2_inventory.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'task2_inventori.wsgi.application'
+WSGI_APPLICATION = 'task2_inventory.wsgi.application'
 
 
 # Database
