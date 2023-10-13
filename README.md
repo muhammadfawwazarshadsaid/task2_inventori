@@ -1,3 +1,47 @@
+# Tugas 6
+
+## Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+Asynchronous programming dan synchronous programming adalah dua model pemrograman yang berbeda dalam cara menyelesaikan tugas. Dalam synchronous programming, tugas-tugas diselesaikan satu per satu dalam urutan yang telah ditentukan, dan ini memblokir utas utama sampai setiap tugas selesai. Sebaliknya, asynchronous programming memungkinkan tugas diselesaikan dalam urutan apa pun, tanpa memblokir utas utama, dengan menggunakan beberapa utas atau mengirimkan beberapa permintaan ke server. Hal ini memungkinkan aplikasi untuk berjalan lebih cepat dan meningkatkan pengalaman pengguna, terutama ketika ada tugas yang memakan waktu. Asynchronous programming biasanya diterapkan pada model komunikasi, di mana permintaan jaringan dapat berjalan secara bersamaan tanpa harus menunggu tugas sebelumnya selesai. Ini sangat penting dalam pengembangan aplikasi yang memerlukan responsivitas dan kinerja yang baik.
+
+Synchronous Programming:
+1. Tugas-tugas dijalankan secara berurutan.
+2. Setiap tugas harus menunggu tugas sebelumnya selesai.
+3. Memakan waktu eksekusi lebih lama jika ada tugas yang memakan waktu.
+4. Blokir utas utama selama tugas berjalan.
+
+Asynchronous Programming:
+1. Tugas-tugas dapat dijalankan secara bersamaan atau tanpa menunggu yang lain.
+2. Tidak perlu menunggu tugas sebelumnya selesai.
+3. Meningkatkan responsivitas aplikasi dan kinerja.
+4. Cocok untuk tugas-tugas yang memakan waktu, seperti pengunduhan dan permintaan jaringan.
+
+
+## Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+Paradigma event-driven programming adalah pendekatan pemrograman di mana aliran eksekusi program ditentukan oleh kejadian atau peristiwa yang terjadi pada program. Dalam paradigma ini, program menunggu kejadian terjadi, seperti pengguna mengklik tombol "submit" pada formulir, dan kemudian meresponsnya dengan menjalankan fungsi atau kode tertentu. Sebagai contoh, ketika tombol "Add Product by Ajax" pada formulir di klik, kode JavaScript akan dijalankan untuk mengirim permintaan AJAX ke server. Paradigma ini memungkinkan aplikasi untuk merespons interaksi pengguna secara dinamis dan mengelola perubahan data.
+
+
+## Jelaskan penerapan asynchronous programming pada AJAX.
+Dalam penerapan asynchronous programming pada AJAX, Fetch API digunakan untuk mengambil data dari server secara asynchronous. Fetch API adalah standar baru dalam JavaScript yang memanfaatkan konsep promise, sehingga memungkinkan pengambilan data dari server tanpa harus memblokir utas utama. Ini sangat berguna dalam menjaga aplikasi tetap responsif, karena aplikasi dapat menjalankan tugas-tugas lainnya sambil menunggu respons dari server. Fetch API juga mendukung berbagai format respons, seperti JSON dan XML, dan memiliki sintaks yang lebih modern dan mudah digunakan.
+
+
+## Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+
+Fetch API vs. jQuery AJAX:
+1. Fetch API:
+a. Lebih modern, kuat, dan fleksibel.
+b. Menggunakan promise, mendukung asynchronous programming dengan lebih baik.
+c. Responsif, memungkinkan pengembangan web yang lebih canggih.
+2. jQuery AJAX:
+a. Teknologi yang pernah populer namun semakin berkurang penggunaannya.
+b. Menggunakan XMLHttpRequest object untuk pengiriman permintaan.
+c. Tidak sefleksibel dan ringan seperti Fetch API.
+
+Di sisi lain, jQuery AJAX adalah teknologi lain yang digunakan untuk mengambil data dari server secara asynchronous. jQuery AJAX menggunakan XMLHttpRequest object untuk mengirim permintaan ke server. Namun, seiring perkembangan teknologi web, penggunaan jQuery semakin berkurang karena keunggulan yang dimiliki oleh Fetch API dan berbagai API asinkron modern lainnya. Menurut pendapat saya, Fetch API adalah pilihan yang lebih baik daripada jQuery AJAX karena lebih mudah digunakan, memiliki sintaks yang lebih sederhana, dan lebih cocok dengan pengembangan web modern. Pilihan teknologi tetap bergantung pada kebutuhan proyek dan preferensi tim pengembangan.
+
+
+
+
+
 # Tugas 5
 
 
