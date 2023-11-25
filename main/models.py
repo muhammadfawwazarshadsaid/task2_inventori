@@ -8,5 +8,5 @@ class Product(models.Model):
     date = models.DateField(auto_now_add=True)
     name = models.CharField(max_length=255)
     description = models.TextField()
-    price = models.PositiveIntegerField()
-    amount = models.PositiveIntegerField()
+    price = models.PositiveIntegerField(default=0)
+    amount = models.PositiveIntegerField(default=0)
